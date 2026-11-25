@@ -1,0 +1,215 @@
+RESP 200 https://embed.radio.co/embeds/schedule/es8a3fb53.html
+RESP 200 https://embed.radio.co/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js
+RESP 200 https://embed.radio.co/_next/static/css/f8f8e99eaacb1a3c.css
+RESP 200 https://embed.radio.co/_next/static/css/13ae8f61c118d949.css
+RESP 200 https://embed.radio.co/_next/static/chunks/webpack-0077384a3ca22a62.js
+RESP 200 https://embed.radio.co/_next/static/chunks/framework-a6e0b7e30f98059a.js
+RESP 200 https://embed.radio.co/_next/static/chunks/main-e4cd9a9c6b7f8ca8.js
+RESP 200 https://embed.radio.co/_next/static/chunks/pages/_app-332aebbc83186b6c.js
+RESP 200 https://embed.radio.co/_next/static/chunks/dc9729d2-404d70cb61dd583e.js
+RESP 200 https://embed.radio.co/_next/static/chunks/07c2d338-fa8108767493f9fa.js
+RESP 200 https://embed.radio.co/_next/static/chunks/934-6d66bd76d877fcf9.js
+RESP 200 https://embed.radio.co/_next/static/chunks/716-431cc608f0a02544.js
+RESP 200 https://embed.radio.co/_next/static/chunks/209-5fc04012cb6ad029.js
+RESP 200 https://embed.radio.co/_next/static/chunks/pages/schedule/%5BwidgetID%5D-66f1a7fb78a60de9.js
+RESP 200 https://embed.radio.co/_next/static/v3-BQmS8OC52fb3eHRDQe/_buildManifest.js
+RESP 200 https://embed.radio.co/_next/static/v3-BQmS8OC52fb3eHRDQe/_ssgManifest.js
+RESP 200 https://embed.radio.co/_next/static/media/Inter.cc27cf3f.ttf
+JSON https://public.radio.co/embeds/schedule/es8a3fb53
+{"data": {"id": "es8a3fb53", "name": "ROCKIN 247 RADIO SCHEDULE", "station": "s0f3a44a66", "theme": {"width": {"type": "auto", "pixels": 320}, "height": 600, "artwork_enabled": true, "accent": "#80190b", "dark": false, "corners": "all", "header": true, "header_text": "Broadcast Schedule", "show_station_name": true, "show_station_logo": true, "header_text_colour": "#ffffff"}}}
+
+JSON https://public.radio.co/stations/s0f3a44a66/status
+{"status": "online", "source": {"type": "automated", "collaborator": null, "relay": null}, "collaborators": [], "relays": [], "current_track": {"title": "Ed Conway - Big Ed's Little Rock & Roll Show #138", "start_time": "2026-11-25T19:00:05+00:00", "artwork_url": "https://images.radio.co/album_art/s0f3a44a66/38649086.100.1795046544.jpg", "artwork_url_large": "https://images.radio.co/album_art/s0f3a44a66/38649086.600.1795046544.jpg"}, "history": [{"title": "Ed Conway - Big Ed's Little Rock & Roll Show #138"}, {"title": "DJ Andy Munday - Andy Munday's Mayhem#50"}, {"title": "Christine & Her Rockers - MV Come On Baby"}, {"title": "Merill Moore - MV  House Of Blue Lights"}, {"title": "DJ Murf - PR Murf Gateway Move Around"}, {"title": "July 10th 2027 - R247 DJ Jamboree"}, {"title": "Duane Eddy - MI  Peter Gunn"}, {"title": "Buddy Holly - MV Maybe Baby"}, {"title": "Spanish Estamos Escuchando - Spanish Estamos escuchando"}, {"title": "IVOX PLUS - IVOX PLUS TV"}, {"title": "The Cooch - PROMO Cooch 2"}, {"title": "Antonio Sorgentone - MV Pete Pete"}, {"title": "Shirley & Lee - MV  Rock All Nite"}, {"title": "The Boners - MV Babyshaker"}, {"title": "Rene Hall's Orchestra Featuring Willie Joe - MI  Twitchy"}, {"title": "DJ Murf - PR 247"}, {"title": "Mario Bradley - Bip Bop Baby"}, {"title": "ALICE JAYNE & THE SIROCCO BROS. - HOO DOO"}, {"title": "Don Deal - MV  Don't Push "}, {"title": "Bill Floyd - MV  Hey Boy"}], "logo_url": "https://images.radio.co/station_logos/s0f3a44a66.20231208074750.jpg", "streaming_hostname": "s4.radio.co", "outputs": [{"name": "listen", "format": "MP3", "bitrate": 128}, {"name": "low", "format": "MP3", "bitrate": 64}], "accepting_requests": true}
+
+RESP 200 https://images.radio.co/station_logos/s0f3a44a66.20231208074750.jpg
+JSON https://public.radio.co/stations/s0f3a44a66/next
+{"station_name": "Rockin 247 Radio", "next_track": {"title": "Ed Conway - Big Ed's Little Rock & Roll Show #138", "artwork_url": "https://images.radio.co/album_art/s0f3a44a66/38649086.100.1795046544.jpg", "artwork_url_large": "https://images.radio.co/album_art/s0f3a44a66/38649086.600.1795046544.jpg"}}
+
+JSON https://public.radio.co/stations/s0f3a44a66/embed/schedule
+{"data": [{"start": "2026-11-23T00:00:00+00:00", "end": "2026-11-23T01:00:00+00:00", "event_id": 233398815, "description": null, "playlist": {"name": "Jukebox Jess", "colour": "#ff6b6b", "artist": "Rockin 247 Radio", "title": "Jukebox Jess", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.1095573.100.1770321545.jpg"}}, {"start": "2026-11-23T03:00:00+00:00", "end": "2026-11-23T04:00:00+00:00", "event_id": 233398872, "description": null, "playlist": {"name": "Tojo", "colour": "#7293cf", "artist": "Rockin 247 Radio", "title": "Tojo", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.412160.100.1605138160.jpg"}}, {"start": "2026-11-23T04:00:00+00:00", "end": "2026-11-23T06:00:00+00:00", "event_id": 214153302, "description": null, "playlist": {"name": "Default", "colour": "#080707", "artist": "Auto Player", "title": "ROCKIN 247 RADIO", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.374110.100.1603661868.jpg"}}, {"start": "2026-11-23T06:00:00+00:00", "end": "2026-11-23T08:00:00+00:00", "event_id": 233398936, "description": null, "playlist": {"name": "Drag Strip with Strop", "colour": "#4810a3", "artist": "DJ Strop (London)", "title": "Drag Strip with Strop", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.374118.100.1739226403.jpg"}}, {"start": "2026-11-23T08:00:00+00:00", "end": "2026-11-23T10:00:00+00:00", "event_id": 214153244, "description": null, "playlist": {"name": "Default", "colour": "#080707", "artist": "Auto Player", "title": "ROCKIN 247 RADIO", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.374110.100.1603661868.jpg"}}, {"start": "2026-11-23T10:00:00+00:00", "end": "2026-11-23T11:00:00+00:00", "event_id": 233398995, "description": null, "playlist": {"name": "Rockin Daddy-O", "colour": "#e9760e", "artist": "Rockin 247 Radio", "title": "Rockin Daddy-O", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.385397.100.1598032392.jpg"}}, {"start": "2026-11-23T12:00:00+00:00", "end": "2026-11-23T13:00:00+00:00", "event_id": 233399060, "description": null, "playlist": {"name": "Steve Jenner", "colour": "#7a91d6", "artist": "Rockin 247 Radio", "title": "Steve Jenner", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.1082066.100.1766153879.jpg"}}, {"start": "2026-11-23T13:00:00+00:00", "end": "2026-11-23T14:00:00+00:00", "event_id": 233422996, "description": null, "playlist": {"name": "John Noe", "colour": "#f06595", "artist": "John Noe", "title": "John Noe", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.1073519.100.1763827563.jpg"}}, {"start": "2026-11-23T14:00:00+00:00", "end": "2026-11-23T15:00:00+00:00", "event_id": 233429084, "description": null, "playlist": {"name": "Sailor Tony", "colour": "#d37ad1", "artist": "Rockin 247 Radio", "title": "Sailor Tony", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.584170.100.1648414703.jpg"}}, {"start": "2026-11-23T16:00:00+00:00", "end": "2026-11-23T17:00:00+00:00", "event_id": 233429188, "description": null, "playlist": {"name": "Ed Conway", "colour": "#5efb41", "artist": "Rockin 247 Radio", "title": "Ed Conway", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.886722.100.1712928649.png"}}, {"start": "2026-11-23T17:00:00+00:00", "end": "2026-11-23T18:00:00+00:00", "event_id": 233429518, "description": null, "playlist": {"name": "Tojo", "colour": "#7293cf", "artist": "Rockin 247 Radio", "title": "Tojo", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.412160.100.1605138160.jpg"}}, {"start": "2026-11-23T18:00:00+00:00", "end": "2026-11-23T19:00:00+00:00", "event_id": 233429847, "description": null, "playlist": {"name": "Debbie Jo", "colour": "#26b7bd", "artist": "Rockin 247 Radio", "title": "Debbie Jo", "artwork": "https://images.radio.co/album_art/s0f3a44a66/playlist.385398.100.1638217541.jpg"}}, {"start": "2026-11-23T19:00:00+00:00", "end": "2026-11-23T20:00:00+00:00", "event_id": 233429952, "des
+
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.385397.100.1598032392.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.374118.100.1739226403.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.942099.100.1727030849.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.666459.100.1653958079.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.374114.100.1650731897.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.531413.100.1626627672.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.588221.100.1637980018.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.886722.100.1712928649.png
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.726649.100.1726853933.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.385393.100.1598031909.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.412160.100.1605138160.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.667179.100.1654441669.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.413536.100.1739226448.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.374110.100.1603661868.jpg
+RESP 200 https://images.radio.co/album_art/s0f3a44a66/playlist.757331.100.1787848017.jpg
+
+=== VISIBLE TEXT ===
+Rockin 247 Radio
+
+Broadcast Schedule
+
+Mon
+
+23 Nov
+
+Tue
+
+24 Nov
+
+Wed
+
+25 Nov
+
+Thu
+
+26 Nov
+
+Fri
+
+27 Nov
+
+Sat
+
+28 Nov
+
+Sun
+
+29 Nov
+
+Mon
+
+30 Nov
+
+Tue
+
+1 Dec
+
+Wed
+
+2 Dec
+
+Thu
+
+3 Dec
+
+Fri
+
+4 Dec
+
+Sat
+
+5 Dec
+
+Sun
+
+6 Dec
+
+12:00AM - 2:00AM
+
+Mike James The Big Breakfast Show
+
+Mike James
+
+2:00AM - 3:00AM
+
+Rhythm 'n' Blues Revue with Strop
+
+Rockin 247 Radio
+
+3:00AM - 4:00AM
+
+Fluff On The Needle - Jivin' Jim Dandy
+
+Rockin 247 Radio
+
+4:00AM - 5:00AM
+
+DJ Be Bop Kaz
+
+Be Bop Kaz
+
+5:00AM - 6:00AM
+
+G.P
+
+Rockin 247 Radio
+
+6:00AM - 7:00AM
+
+THE ELVIS HOUR
+
+Rockin 247 Radio
+
+7:00AM - 8:00AM
+
+Tojo
+
+Rockin 247 Radio
+
+8:00AM - 9:00AM
+
+Col Paco Chaos
+
+Rockin 247 Radio
+
+10:00AM - 11:00AM
+
+Andy Munday
+
+Andy Munday
+
+11:00AM - 12:00PM
+
+Ed Conway
+
+ON AIR
+
+Rockin 247 Radio
+
+12:00PM - 1:00PM
+
+Rockin' 24/7 w/DJ Lady Luck Lexy
+
+Lady Luck Lexy
+
+1:00PM - 2:00PM
+
+Rock That Boogie with Ken Abruzzi
+
+Rockin 247 Radio
+
+2:00PM - 4:00PM
+
+Drag Strip with Strop
+
+DJ Strop (London)
+
+5:00PM - 6:00PM
+
+Rockin Daddy-O
+
+Rockin 247 Radio
+
+7:00PM - 8:00PM
+
+Rob Daniels
+
+Rockin 247 Radio
+
+10:00PM - 11:00PM
+
+ROCKIN 247 RADIO
+
+Auto Player
+
+=== HTML (start) ===
+<!DOCTYPE html><html data-mantine-color-scheme="light"><head><meta charset="utf-8" data-next-head=""><meta name="viewport" content="width=device-width" data-next-head=""><link data-next-font="" rel="preconnect" href="/" crossorigin="anonymous"><link rel="preload" href="/_next/static/css/13ae8f61c118d949.css" as="style"><link rel="stylesheet" href="/_next/static/css/13ae8f61c118d949.css" data-n-g=""><link rel="preload" href="/_next/static/css/f8f8e99eaacb1a3c.css" as="style"><link rel="stylesheet" href="/_next/static/css/f8f8e99eaacb1a3c.css" data-n-p=""><noscript data-n-css=""></noscript><script defer="" nomodule="" src="/_next/static/chunks/polyfills-42372ed130431b0a.js" type="text/javascript"></script><script src="/_next/static/chunks/webpack-0077384a3ca22a62.js" defer="" type="text/javascript"></script><script src="/_next/static/chunks/framework-a6e0b7e30f98059a.js" defer="" type="text/javascript"></script><script src="/_next/static/chunks/main-e4cd9a9c6b7f8ca8.js" defer="" type="text/javascript"></script><script src="/_next/static/chunks/pages/_app-332aebbc83186b6c.js" defer="" type="text/javascript"></script><script src="/_next/static/chunks/dc9729d2-404d70cb61dd583e.js" defer="" type="text/javascript"></script><script src="/_next/static/chunks/07c2d338-fa8108767493f9fa.js" defer="" type="text/javascript"></script><script src="/_next/static/chunks/934-6d66bd76d877fcf9.js" defer="" type="text/javascript"></script><script src="/_next/static/chunks/716-431cc608f0a02544.js" defer="" type="text/javascript"></script><script src="/_next/static/chunks/209-5fc04012cb6ad029.js" defer="" type="text/javascript"></script><script src="/_next/static/chunks/pages/schedule/%5BwidgetID%5D-66f1a7fb78a60de9.js" defer="" type="text/javascript"></script><script src="/_next/static/v3-BQmS8OC52fb3eHRDQe/_buildManifest.js" defer="" type="text/javascript"></script><script src="/_next/static/v3-BQmS8OC52fb3eHRDQe/_ssgManifest.js" defer="" type="text/javascript"></script></head><body><div id="__next"><style data-mantine-styles="true">:root, :host{--mantine-line-height: 1.6;--mantine-font-family: Inter, sans-serif;--mantine-font-family-monospace: Menlo, monospace;--mantine-font-family-headings: DM Sans, sans-serif;--mantine-heading-font-weight: 800;--mantine-line-height-sm: 1.5;--mantine-line-height-md: 1.6;--mantine-line-height-xl: 1.6;--mantine-h1-font-weight: 800;--mantine-h2-font-weight: 800;--mantine-h3-font-weight: 800;}
+
+
+
+</style><style data-mantine-styles="classes">@media (max-width: 35.99375em) {.mantine-visible-from-xs {display: none !important;}}@media (min-width: 36em) {.mantine-hidden-from-xs {display: none !important;}}@media (max-width: 47.99375em) {.mantine-visible-from-sm {display: none !important;}}@media (min-width: 48em) {.mantine-hidden-from-sm {display: none !important;}}@media (max-width: 61.99375em) {.mantine-visible-from-md {display: none !important;}}@media (min-width: 62em) {.mantine-hidden-from-md {display: none !important;}}@media (max-width: 74.99375em) {.mantine-visible-from-lg {display: none !important;}}@media (min-width: 75em) {.mantine-hidden-from-lg {display: none !important;}}@media (max-width: 87.99375em) {.mantine-visible-from-xl {display: none !important;}}@media (min-width: 88em) {.mantine-hidden-from-xl {display: none !important;}}</style><div><style data-mantine-styles="true">:root, :host{--mantine-line-height: 1.6;--mantine-font-family: Inter, sans-serif;--mantine-font-family-monospace: Menlo, monospace;--mantine-font-family-headings: DM Sans, sans-serif;--mantine-heading-font-weight: 800;--mantine-line-height-sm: 1.5;--mantine-line-height-md: 1.6;--mantine-line-height-xl: 1.6;--mantine-h1-font-weight: 800;--mantine-h2-font-weight: 800;--mantine-h3-font-weight: 800;}
+
+
+
+</style><style data-mantine-styles="classes">@media (max-width: 35.99375em) {.mantine-visible-from-xs {display: none !important;}}@media (min-width: 36em) {.mantine-hidden-from-xs {display: none !important;}}@media (max-width: 47.99375em) {.mantine-visible-from-sm {display: none !important;}}@media (min-width: 48em) {.mantine-hidden-from-sm {display: none !important;}}@media (max-width: 61.99375em) {.mantine-visible-from-md {display: none !important;}}@media (min-width: 62em) {.mantine-hidden-from-md {display: none !important;}}@media (max-width: 74.99375em) {.mantine-visible-from-lg {display: none !important;}}@media (min-width: 75em) {.mantine-hidden-from-lg {display: none !important;}}@media (max-width: 87.99375em) {.mantine-visible-from-xl {display: none !important;}}@media (min-width: 88em) {.mantine-hidden-from-xl {display: none !important;}}</style><div class="ScheduleWidget_ScheduleWidgetContainer__ujDk5 m_1b7284a3 mantine-Paper-root" style="--paper-shadow: var(--mantine-shadow-none); width: 100%; height: 600px; min-width: 320px; min-height: 240px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); border-radius: 8px;"><div class="ScheduleWidget_ScheduleWidgetHeader__U_LTQ" style="background-color: rgb(128, 25, 11); color: rgb(255, 255, 255); display: flex;"><img class="ScheduleWidget_ScheduleWidgetHeaderLogo__Wzovl m_9e117634 mantine-Image-root" src="https://images.radio.co/station_logos/s0f3a44a66.20231208074750.jpg" alt="Station Logo" style="--image-radius: var(--mantine-radius-sm); flex-shrink: 0; width: calc(2.5rem * var(--mantine-scale)); height: calc(2.5rem * var(--mantine-scale));"><div class="ScheduleWidget_ScheduleWidgetHeaderContent__SfYuG"><p class="mantine-focus-auto ScheduleWidget_ScheduleWidgetStationName__i6qGg m_b6d8b162 mantine-Text-root" data-size="md" style="--text-fz: var(--mantine-font-size-md); --text-lh: var(--mantine-line-height-md); font-weight: 600;">Rockin 247 Radio</p><p class="mantine-focus-auto ScheduleWidget_ScheduleWidgetHeaderMessage__o99E_ m_b6d8b162 mantine-Text-root" data-size="lg" style="--text-fz: var(--mantine-font-size-lg); --text-lh: var(--mantine-line-height-lg); font-weight: 600;">Broadcast Schedule</p></div></div><div class="ScheduleWidget_ScheduleWidgetTabsContainer__CJeKc"><div class="ScheduleWidget_ScheduleWidgetTabsWrapper__Rd1Z4" style="--schedule-widget-accent: #80190b; margin-bottom: var(--mantine-spacing-md);"><div class="m_4081bf90 mantine-Group-root" style="--group-gap: 0rem; --group-align: center; --group-justify: space-between; --group-wrap: wrap;"><button class="mantine-focus-auto ScheduleWidget_ScheduleWidgetChangeWeek__vuKWv m_8d3f4000 mantine-ActionIcon-root m_87cf2631 mantine-UnstyledButton-root" data-variant="subtle" data-size="lg" data-disabled="true" type="button" disabled="" style="--ai-size: var(--ai-size-lg); --ai-bg: transparent; --ai-hover: var(--mantine-color-blue-light-hover); --ai-color: var(--mantine-color-blue-light-color); --ai-bd: calc(0.0625rem * var(--mantine-scale)) solid transparent; color: rgb(0, 0, 0); opacity: 0.3;"><span class="m_8d3afb97 mantine-ActionIcon-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tabler-icon tabler-icon-chevron-left"><path d="M15 6l-6 6l6 6"></path></svg></span></button><div class="ScheduleWidget_ScheduleWidgetScrollContainer__6QTpd"><div class="ScheduleWidget_ScheduleWidgetTabs__u8LSN m_89d60db1 mantine-Tabs-root" data-variant="outline" data-orientation="horizontal" id="mantine-xzneizpbz" style="--tabs-radius: var(--mantine-radius-default); --tabs-color: var(--mantine-color-blue-filled);"><div class="m_6772fbd5 m_89d33d6d mantine-Tabs-list ScheduleWidget_ScheduleWidgetTabsList__5siDZ" data-variant="outline" data-orientation="horizontal" role="tablist" aria-orientation="horizontal"><button class="mantine-focus-auto m_b59ab47c m_4ec4dce6 mantine-Tabs-tab ScheduleWidget_ScheduleWidgetTab__lAI6X m_87cf2631 mantine-UnstyledButton-root" data-variant="outline" data-orientation="horizontal" type="button" role="tab" id="mantine-xzneizpbz-tab-0" aria-selected="false" tabindex="-1" aria-controls="mantine-
