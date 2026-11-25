@@ -155,22 +155,108 @@ def parse_rrb(html):
     return out
 
 
-# ---------------- Rockin 247 Radio: radio.co embed, US Pacific (check!) ----------------
+# ---------------- Rockin 247 Radio: radio.co embed (JavaScript-built), US Pacific ----------------
 EMBED = "https://embed.radio.co/embeds/schedule/es8a3fb53.html"
+R247_TZ = "America/Los_Angeles"
+START_KEYS = ("start", "start_time", "starts", "starts_at", "begin", "from")
+END_KEYS = ("end", "end_time", "ends", "ends_at", "finish", "to")
+TITLE_KEYS = ("name", "title", "show", "show_name", "programme", "program")
+DJ_KEYS = ("presenter", "dj", "host", "presenter_name", "artist")
+
+
+def _walk(o):
+    if isinstance(o, dict):
+        yield o
+        for v in o.values():
+            yield from _walk(v)
+    elif isinstance(o, list):
+        for v in o:
+            yield from _walk(v)
+
+
+def _first(d, keys):
+    for k in keys:
+        if k in d and d[k] not in (None, ""):
+            return d[k]
+    return None
+
+
+def _to_dt(v, tz):
+    from zoneinfo import ZoneInfo
+    if isinstance(v, (int, float)):
+        v = v / 1000 if v > 1e11 else v
+        return datetime.datetime.fromtimestamp(v, datetime.timezone.utc).astimezone(ZoneInfo(tz))
+    s = str(v).strip().replace("Z", "+00:00")
+    d = datetime.datetime.fromisoformat(s.replace(" ", "T", 1) if "T" not in s else s)
+    return d.astimezone(ZoneInfo(tz)) if d.tzinfo else d.replace(tzinfo=ZoneInfo(tz))
+
+
+def shows_from_json(blobs, tz):
+    """Find objects that look like schedule entries (a title plus start and end
+    date-times) anywhere in captured JSON, and turn them into weekly shows."""
+    seen, out = set(), []
+    for blob in blobs:
+        for d in _walk(blob):
+            title, st, en = _first(d, TITLE_KEYS), _first(d, START_KEYS), _first(d, END_KEYS)
+            if not (isinstance(title, str) and st is not None and en is not None):
+                continue
+            try:
+                a, b = _to_dt(st, tz), _to_dt(en, tz)
+            except Exception:
+                continue
+            dj = _first(d, DJ_KEYS)
+            dj = dj if isinstance(dj, str) else ""
+            dow = (a.weekday() + 1) % 7            # python Mon=0 -> our Sun=0
+            key = (dow, a.strftime("%H:%M"), b.strftime("%H:%M"), title)
+            if key not in seen:
+                seen.add(key)
+                out.append(show(dow, key[1], key[2], title, dj))
+    return out
 
 
 def parse_rockin247(_unused=None):
-    """Best effort. The widget is hosted on radio.co and its markup has not been
-    verified. Order of attempts:
-      1. a hand-made file manual/rockin247.json (always wins if it has shows)
-      2. a table in the embed HTML
-    Fill the manual file from the station's printable PDF if scraping fails."""
+    """1) manual/rockin247.json if it has shows (always wins)
+       2) open the embed in a browser, capture its JSON responses, parse them
+       3) parse a rendered table
+    Whatever it sees is saved to debug/rockin247.txt so a failure can be diagnosed."""
     manual = ROOT / "manual" / "rockin247.json"
     if manual.exists():
         data = json.loads(manual.read_text())
         if data.get("shows"):
             return data["shows"]
-    html = get(EMBED)
+
+    from playwright.sync_api import sync_playwright
+    blobs, log = [], []
+    with sync_playwright() as p:
+        b = p.chromium.launch()
+        pg = b.new_page(timezone_id=R247_TZ)
+
+        def on_resp(r):
+            try:
+                ct = r.headers.get("content-type", "")
+                if "json" in ct or r.url.endswith(".json"):
+                    body = r.json()
+                    blobs.append(body)
+                    log.append("JSON %s\n%s\n" % (r.url, json.dumps(body)[:4000]))
+                else:
+                    log.append("RESP %s %s" % (r.status, r.url))
+            except Exception as e:
+                log.append("RESP-ERR %s %s" % (r.url, e))
+
+        pg.on("response", on_resp)
+        pg.goto(EMBED, wait_until="networkidle", timeout=60000)
+        pg.wait_for_timeout(3000)
+        html = pg.content()
+        text = pg.inner_text("body")
+        b.close()
+    dbg = ROOT / "debug"
+    dbg.mkdir(exist_ok=True)
+    (dbg / "rockin247.txt").write_text("\n".join(log) + "\n\n=== VISIBLE TEXT ===\n" + text[:8000]
+                                       + "\n\n=== HTML (start) ===\n" + html[:8000])
+
+    out = shows_from_json(blobs, R247_TZ)
+    if len(out) >= MIN_SHOWS:
+        return out
     soup = BeautifulSoup(html, "html.parser")
     out = []
     for tb in soup.find_all("table"):
@@ -181,12 +267,11 @@ def parse_rockin247(_unused=None):
                 for tr in tb.find_all("tr"):
                     tds = [td.get_text(" ", strip=True) for td in tr.find_all("td")]
                     m = next((re.search(r"(\d{1,2}(?::\d{2})?\s*(?:[ap]m)?)\s*(?:-|to)\s*(\d{1,2}(?::\d{2})?\s*(?:[ap]m)?)", x, re.I) for x in tds if re.search(r"\d", x)), None)
-                    if m and len(tds) >= 2:
-                        name = [x for x in tds if x and not re.search(r"\d\s*(?:-|to)\s*\d", x)]
-                        if name:
-                            out.append(show(dow, hhmm(m[1]), hhmm(m[2]), name[-1], name[0] if len(name) > 1 else ""))
+                    names = [x for x in tds if x and not re.search(r"\d\s*(?:-|to)\s*\d", x)]
+                    if m and names:
+                        out.append(show(dow, hhmm(m[1]), hhmm(m[2]), names[-1], names[0] if len(names) > 1 else ""))
     if not out:
-        raise ValueError("Rockin247: could not read the embed; fill manual/rockin247.json (see README)")
+        raise ValueError("could not read the radio.co widget; see debug/rockin247.txt")
     return out
 
 
