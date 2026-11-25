@@ -117,9 +117,9 @@
     if (o.start <= now && o.end > now) cls.push("cur");
     else if (o.end <= now) cls.push("past");
     if (o.auto) cls.push("auto");
-    const star = o.auto ? "" :
+    const star = (o.auto || !o.dj) ? "" :
       `<button class="star" data-dj="${esc(o.dj)}" aria-pressed="${isFav(o.dj)}" aria-label="Follow ${esc(o.dj)}" title="Follow this DJ">${isFav(o.dj) ? "&#9733;" : "&#9734;"}</button>`;
-    return `<div class="${cls.join(" ")}"><time>${range(o)}</time><div class="who"><div class="t">${esc(o.show)}</div><div class="d">${esc(o.dj)}${opts && opts.station ? ' <span class="meta">&middot; ' + esc(o.stationName) + "</span>" : ""}</div></div>${star}</div>`;
+    return `<div class="${cls.join(" ")}"><time>${range(o)}</time><div class="who"><div class="t">${esc(o.show)}</div><div class="d">${esc(o.dj)}${opts && opts.station ? (o.dj ? ' <span class="meta">&middot; ' : '<span class="meta">') + esc(o.stationName) + "</span>" : ""}</div></div>${star}</div>`;
   }
   function renderDay() {
     renderDayPicker();
