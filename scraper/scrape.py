@@ -311,6 +311,28 @@ def parse_rockin247(_unused=None):
     return out
 
 
+# ---------------- Rockin' 50s: plain text, day headings, "8.00-10.00 Show name", UK time (assumed) ----------------
+def parse_rockin50s(html):
+    soup = BeautifulSoup(html, "html.parser")
+    for t in soup(["script", "style", "nav"]):
+        t.decompose()
+    out, dow = [], None
+    pat = re.compile(r"^\**\s*(\d{1,2})[.:](\d{2})\s*-\s*(\d{1,2})[.:](\d{2})\s*[-:–]?\s*(.*?)\**\s*$")
+    for line in soup.get_text("\n").splitlines():
+        line = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", line)   # [Monday](#) -> Monday
+        line = line.strip().strip("*# ").strip()
+        if not line:
+            continue
+        if line.lower() in DAYS:
+            dow = DAYS.index(line.lower())
+            continue
+        m = pat.match(line)
+        if m and dow is not None:
+            start, end = "%02d:%s" % (int(m[1]), m[2]), "%02d:%s" % (int(m[3]), m[4])
+            out.append(show(dow, start, end, m[5].strip() or "Show", ""))
+    return out
+
+
 STATIONS = {
     "rockabilly":   dict(name="Rockabilly Radio", tz="Europe/London", url="https://www.rockabillyradio.net/schedule/",
                          fetch=lambda u: get(u), parse=parse_rockabilly),
@@ -318,6 +340,8 @@ STATIONS = {
                          fetch=lambda u: "", parse=parse_rockin247),
     "splinterwood": dict(name="SplinterWood Radio", tz="Europe/London", url="https://www.splinterwoodradio.uk/presenter-schedule/",
                          fetch=lambda u: get(u), parse=parse_splinterwood),
+    "rockin50s":    dict(name="Rockin' 50s", tz="Europe/London", url="https://www.rockin50s.uk/schedule.php",
+                         fetch=lambda u: get(u), parse=parse_rockin50s),
     "rrb":          dict(name="Rockin' Rhythm & Blues", tz="America/New_York", url="https://rockinrhythmandbluesradio.com/schedule-usa-eastern/",
                          fetch=lambda u: render(u, "a[href*='/show/']"), parse=parse_rrb),
 }
