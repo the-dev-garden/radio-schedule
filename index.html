@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>Rock 'n' Roll Radio Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1b1613">
+<meta name="description" content="Live show and DJ schedules for four rock 'n' roll radio stations, in UK time.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Radio Guide">
+<style>
+:root{
+  --bg:#1b1613; --panel:#262019; --panel2:#2f271f; --line:#41362b;
+  --ink:#f3e9d7; --dim:#a8998400; --muted:#b3a58f; --accent:#e4492f; --accent2:#f2b84b; --ok:#6fcf97;
+  --radius:14px;
+}
+@media (prefers-color-scheme: light){
+  :root{ --bg:#f6efe2; --panel:#fffaf0; --panel2:#f0e6d2; --line:#d9ccb2; --ink:#2a211a; --muted:#6f6251; --accent:#c4361f; --accent2:#9a6a00; --ok:#1f8a4c; }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  padding-bottom:calc(72px + env(safe-area-inset-bottom));}
+h1,h2,h3{font-family:Rockwell,"Roboto Slab","Rockwell Nova",Georgia,serif;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--accent2)}
+
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);
+  padding:calc(10px + env(safe-area-inset-top)) 16px 10px;}
+.top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;max-width:1400px;margin:0 auto}
+.top h1{font-size:1.25rem;letter-spacing:.2px}
+.top h1 span{color:var(--accent)}
+.clock{margin-left:auto;font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px;max-width:1400px;margin:0 auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px;font-size:.88rem;min-height:36px}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.chip.small{font-size:.82rem}
+
+main{max-width:1400px;margin:0 auto;padding:16px}
+.view{display:none}
+.view.active{display:block}
+
+/* tab bar */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--panel);border-top:1px solid var(--line);
+  display:flex;padding-bottom:env(safe-area-inset-bottom);z-index:6}
+nav.tabs button{flex:1;border:0;background:none;padding:12px 4px;font-size:.85rem;color:var(--muted);min-height:56px}
+nav.tabs button[aria-selected="true"]{color:var(--accent);font-weight:700;box-shadow:inset 0 3px 0 var(--accent)}
+nav.tabs .ico{display:block;font-size:1.2rem;line-height:1.1}
+@media (min-width:900px){
+  nav.tabs{position:static;border:0;background:none;max-width:1400px;margin:0 auto;padding:0 16px;gap:6px}
+  nav.tabs button{flex:none;padding:8px 18px;border-radius:999px;min-height:40px;font-size:.95rem}
+  nav.tabs button[aria-selected="true"]{background:var(--panel2);box-shadow:none}
+  nav.tabs .ico{display:inline;margin-right:6px}
+  body{padding-bottom:24px}
+  .tabwrap{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:var(--hh,92px);z-index:4;padding:6px 0}
+}
+
+/* on now cards */
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.card h2{font-size:1.05rem;display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.card h2 a{margin-left:auto;font-size:.8rem;font-family:system-ui,sans-serif;font-weight:400}
+.live{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion:reduce){.live{animation:none}}
+.now-show{font-size:1.15rem;font-weight:700;margin:2px 0}
+.now-dj{color:var(--accent2)}
+.meta{color:var(--muted);font-size:.85rem}
+.bar{height:5px;border-radius:3px;background:var(--panel2);margin:8px 0 12px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.next{border-top:1px dashed var(--line);padding-top:8px;margin-top:6px;display:grid;gap:6px}
+.next div{display:flex;gap:10px;font-size:.92rem}
+.next time{flex:none;width:3.6rem;font-variant-numeric:tabular-nums;color:var(--muted)}
+.auto{opacity:.6}
+.tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.6px;border:1px solid var(--line);border-radius:6px;padding:1px 5px;color:var(--muted);margin-left:6px;vertical-align:middle}
+.note{background:var(--panel2);border-radius:10px;padding:8px 10px;font-size:.85rem;color:var(--muted);margin-top:8px}
+
+/* day view */
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.day{flex:none;text-align:center;border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:6px 12px;min-width:64px;min-height:52px}
+.day b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+.day[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.day[aria-pressed="true"] b{color:#fff}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 14px}
+.cols{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+.slot{display:flex;gap:10px;padding:9px 0;border-top:1px solid var(--line)}
+.slot:first-of-type{border-top:0}
+.slot time{flex:none;width:6.2rem;font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem;padding-top:1px}
+.slot .who{min-width:0;flex:1}
+.slot .t{font-weight:600;overflow-wrap:anywhere}
+.slot .d{color:var(--accent2);font-size:.9rem;overflow-wrap:anywhere}
+.slot.cur{background:color-mix(in srgb,var(--accent) 14%,transparent);margin:0 -8px;padding-left:8px;padding-right:8px;border-radius:8px;border-color:transparent}
+.slot.past{opacity:.5}
+.star{flex:none;border:0;background:none;font-size:1.25rem;line-height:1;width:40px;height:40px;color:var(--muted);align-self:center}
+.star[aria-pressed="true"]{color:var(--accent2)}
+
+/* find */
+.search{display:flex;gap:8px;margin-bottom:10px}
+.search input{flex:1;min-width:0;font:inherit;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink)}
+.search input:focus-visible,.chip:focus-visible,.day:focus-visible,.star:focus-visible,nav.tabs button:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+.res{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:4px 14px}
+.res h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);padding:12px 0 2px;font-family:system-ui,sans-serif}
+.res .slot time{width:4.4rem}
+.empty{color:var(--muted);text-align:center;padding:36px 12px}
+
+footer{max-width:1400px;margin:8px auto 0;padding:0 16px 24px;color:var(--muted);font-size:.82rem}
+@media (max-width:899px){.tabwrap{display:contents}}
+</style>
+</head>
+<body>
+<header id="hdr">
+  <div class="top">
+    <h1>Rock <span>'n'</span> Roll Radio Guide</h1>
+    <div class="clock" id="clock" aria-live="off"></div>
+  </div>
+  <div class="chips" id="stationChips" role="group" aria-label="Stations"></div>
+</header>
+
+<div class="tabwrap">
+<nav class="tabs" role="tablist" aria-label="Views">
+  <button role="tab" id="tab-now"  aria-selected="true"  data-view="now"><span class="ico">&#9654;</span>On now</button>
+  <button role="tab" id="tab-day"  aria-selected="false" data-view="day"><span class="ico">&#128197;</span>Day</button>
+  <button role="tab" id="tab-find" aria-selected="false" data-view="find"><span class="ico">&#128269;</span>Find</button>
+</nav>
+</div>
+
+<main>
+  <section class="view active" id="view-now" role="tabpanel" aria-labelledby="tab-now">
+    <div class="grid" id="nowGrid"></div>
+  </section>
+
+  <section class="view" id="view-day" role="tabpanel" aria-labelledby="tab-day">
+    <div class="days" id="dayPicker" role="group" aria-label="Day"></div>
+    <div class="opts">
+      <button class="chip small" id="hideAuto" aria-pressed="true">Hide Auto DJ</button>
+    </div>
+    <div class="cols" id="dayCols"></div>
+  </section>
+
+  <section class="view" id="view-find" role="tabpanel" aria-labelledby="tab-find">
+    <div class="search">
+      <input id="q" type="search" placeholder="Search a DJ or show, e.g. Johnny B" autocomplete="off" aria-label="Search DJs and shows">
+    </div>
+    <div class="opts">
+      <button class="chip small" id="favOnly" aria-pressed="false">&#9733; Favourites only</button>
+      <button class="chip small" id="hideAuto2" aria-pressed="true">Hide Auto DJ</button>
+    </div>
+    <div id="results"></div>
+  </section>
+</main>
+
+<footer id="foot"></footer>
+
+<script src="schedule.js"></script>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
