@@ -19,6 +19,6 @@ jobs:
         run: |
           git config user.name "schedule-bot"
           git config user.email "bot@users.noreply.github.com"
-          git add schedule.json schedule.js
+          git add -A schedule.json schedule.js
           git diff --cached --quiet || git commit -m "Update schedules"
           git push
