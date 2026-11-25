@@ -214,27 +214,81 @@ def shows_from_json(blobs, tz):
     return out
 
 
+def radio_co_shows(blobs):
+    """radio.co schedule JSON: {"data": [{"start": ISO-UTC, "end": ISO-UTC,
+    "playlist": {"name", "artist", "title"}}, ...]} covering ~2 weeks.
+    Uses the first 7 days as the repeating weekly pattern. Times stay in UTC."""
+    events = []
+    for blob in blobs:
+        for d in _walk(blob):
+            pl = d.get("playlist")
+            if isinstance(pl, dict) and d.get("start") and d.get("end"):
+                try:
+                    events.append((_to_dt(d["start"], "UTC"), _to_dt(d["end"], "UTC"), pl))
+                except Exception:
+                    pass
+    if not events:
+        return []
+    first = min(e[0] for e in events).replace(hour=0, minute=0, second=0, microsecond=0)
+    last = first + datetime.timedelta(days=7)
+    seen, out = set(), []
+    for a, b, pl in events:
+        if not (first <= a < last):
+            continue
+        name = (pl.get("name") or pl.get("title") or "").strip()
+        artist = (pl.get("artist") or "").strip()
+        if artist.lower() in ("auto player", "auto dj") or name.lower() == "default":
+            name, dj = "Auto Player", "Auto DJ"
+        elif not artist or "rockin 247" in artist.lower():
+            dj = name            # these playlists are named after the DJ
+        else:
+            dj = artist
+        dow = (a.weekday() + 1) % 7            # python Mon=0 -> our Sun=0
+        key = (dow, a.strftime("%H:%M"), b.strftime("%H:%M"), name)
+        if key not in seen:
+            seen.add(key)
+            out.append(show(dow, key[1], key[2], name, dj))
+    return out
+
+
 def parse_rockin247(_unused=None):
     """1) manual/rockin247.json if it has shows (always wins)
-       2) open the embed in a browser, capture its JSON responses, parse them
-       3) parse a rendered table
-    Whatever it sees is saved to debug/rockin247.txt so a failure can be diagnosed."""
+       2) radio.co's schedule JSON, fetched directly
+       3) open the widget in a browser, capture its JSON, parse that
+    Whatever the browser sees is saved to debug/rockin247.txt."""
     manual = ROOT / "manual" / "rockin247.json"
     if manual.exists():
         data = json.loads(manual.read_text())
         if data.get("shows"):
             return data["shows"]
 
+    # 2) direct
+    try:
+        hdr = dict(UA, Referer="https://embed.radio.co/", Origin="https://embed.radio.co")
+        w = requests.get("https://public.radio.co/embeds/schedule/es8a3fb53", headers=hdr, timeout=30).json()
+        station = w["data"]["station"]
+    except Exception:
+        station = "s0f3a44a66"
+    try:
+        r = requests.get("https://public.radio.co/stations/%s/embed/schedule" % station,
+                         headers=dict(UA, Referer="https://embed.radio.co/", Origin="https://embed.radio.co"), timeout=30)
+        r.raise_for_status()
+        out = radio_co_shows([r.json()])
+        if len(out) >= MIN_SHOWS:
+            return out
+    except Exception as e:
+        print("Rockin247: direct fetch failed (%s); trying browser" % e, file=sys.stderr)
+
+    # 3) browser
     from playwright.sync_api import sync_playwright
     blobs, log = [], []
     with sync_playwright() as p:
         b = p.chromium.launch()
-        pg = b.new_page(timezone_id=R247_TZ)
+        pg = b.new_page()
 
         def on_resp(r):
             try:
-                ct = r.headers.get("content-type", "")
-                if "json" in ct or r.url.endswith(".json"):
+                if "json" in r.headers.get("content-type", ""):
                     body = r.json()
                     blobs.append(body)
                     log.append("JSON %s\n%s\n" % (r.url, json.dumps(body)[:4000]))
@@ -246,31 +300,13 @@ def parse_rockin247(_unused=None):
         pg.on("response", on_resp)
         pg.goto(EMBED, wait_until="networkidle", timeout=60000)
         pg.wait_for_timeout(3000)
-        html = pg.content()
         text = pg.inner_text("body")
         b.close()
     dbg = ROOT / "debug"
     dbg.mkdir(exist_ok=True)
-    (dbg / "rockin247.txt").write_text("\n".join(log) + "\n\n=== VISIBLE TEXT ===\n" + text[:8000]
-                                       + "\n\n=== HTML (start) ===\n" + html[:8000])
-
-    out = shows_from_json(blobs, R247_TZ)
-    if len(out) >= MIN_SHOWS:
-        return out
-    soup = BeautifulSoup(html, "html.parser")
-    out = []
-    for tb in soup.find_all("table"):
-        head = tb.get_text(" ", strip=True).lower()
-        for d in DAYS:
-            if head.startswith(d):
-                dow = DAYS.index(d)
-                for tr in tb.find_all("tr"):
-                    tds = [td.get_text(" ", strip=True) for td in tr.find_all("td")]
-                    m = next((re.search(r"(\d{1,2}(?::\d{2})?\s*(?:[ap]m)?)\s*(?:-|to)\s*(\d{1,2}(?::\d{2})?\s*(?:[ap]m)?)", x, re.I) for x in tds if re.search(r"\d", x)), None)
-                    names = [x for x in tds if x and not re.search(r"\d\s*(?:-|to)\s*\d", x)]
-                    if m and names:
-                        out.append(show(dow, hhmm(m[1]), hhmm(m[2]), names[-1], names[0] if len(names) > 1 else ""))
-    if not out:
+    (dbg / "rockin247.txt").write_text("\n".join(log) + "\n\n=== VISIBLE TEXT ===\n" + text[:8000])
+    out = radio_co_shows(blobs)
+    if len(out) < MIN_SHOWS:
         raise ValueError("could not read the radio.co widget; see debug/rockin247.txt")
     return out
 
@@ -278,7 +314,7 @@ def parse_rockin247(_unused=None):
 STATIONS = {
     "rockabilly":   dict(name="Rockabilly Radio", tz="Europe/London", url="https://www.rockabillyradio.net/schedule/",
                          fetch=lambda u: get(u), parse=parse_rockabilly),
-    "rockin247":    dict(name="Rockin 247 Radio", tz="America/Los_Angeles", url="https://rockin247radio.com/schedule/",
+    "rockin247":    dict(name="Rockin 247 Radio", tz="UTC", url="https://rockin247radio.com/schedule/",
                          fetch=lambda u: "", parse=parse_rockin247),
     "splinterwood": dict(name="SplinterWood Radio", tz="Europe/London", url="https://www.splinterwoodradio.uk/presenter-schedule/",
                          fetch=lambda u: get(u), parse=parse_splinterwood),
