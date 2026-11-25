@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-25T19:20:12Z",
+ "generated": "2026-11-25T19:38:46Z",
  "source": "scraper",
  "stations": [
   {
@@ -2631,6 +2631,758 @@
      "show": "Auto DJ",
      "dj": "Auto DJ",
      "auto": true
+    }
+   ]
+  },
+  {
+   "id": "rockin50s",
+   "name": "Rockin' 50s",
+   "tz": "Europe/London",
+   "url": "https://www.rockin50s.uk/schedule.php",
+   "shows": [
+    {
+     "dow": 0,
+     "start": "00:00",
+     "end": "08:00",
+     "show": "Replay Live Shows",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "08:00",
+     "end": "09:00",
+     "show": "Good Morning All",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "09:00",
+     "end": "12:00",
+     "show": "Rockin' with Clive Burnham",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "12:00",
+     "end": "14:00",
+     "show": "Rockin' Ryan",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "14:00",
+     "end": "16:00",
+     "show": "Baby Blue Eyes and DJ Gee",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "16:00",
+     "end": "18:00",
+     "show": "Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "18:00",
+     "end": "20:00",
+     "show": "Steve Hammond",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "20:00",
+     "end": "22:00",
+     "show": "Jive After Five with David Privett",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "22:00",
+     "end": "23:00",
+     "show": "The Love Zone",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "23:00",
+     "end": "00:00",
+     "show": "Midnight Connection",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "00:00",
+     "end": "08:00",
+     "show": "Replay Live Shows",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "08:00",
+     "end": "10:00",
+     "show": "Good Morning All",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "10:00",
+     "end": "11:00",
+     "show": "Rock around the clock",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "11:00",
+     "end": "12:00",
+     "show": "A Mix of All",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "12:00",
+     "end": "12:30",
+     "show": "Girls Gona Rockin'",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "12:30",
+     "end": "13:00",
+     "show": "Doo Wop / Vintage R&B Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "13:00",
+     "end": "13:30",
+     "show": "Jive, Bop and Stroll",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "13:30",
+     "end": "14:00",
+     "show": "Golden Oldies Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "14:00",
+     "end": "16:00",
+     "show": "Mr. P's Rockin'Round-Up",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "16:00",
+     "end": "18:00",
+     "show": "Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "18:00",
+     "end": "20:00",
+     "show": "Jumpin' Jack The High Class DJ",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "20:00",
+     "end": "22:00",
+     "show": "Miss Mayhem",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "22:00",
+     "end": "23:00",
+     "show": "Midnight Connection",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "23:00",
+     "end": "00:00",
+     "show": "Replay Live Shows",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "00:00",
+     "end": "08:00",
+     "show": "Replay Live Shows",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "08:00",
+     "end": "10:00",
+     "show": "Good Morning All",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "10:00",
+     "end": "12:00",
+     "show": "Scott's Rockin' Session (Nerina)",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "12:00",
+     "end": "12:30",
+     "show": "Girls Gona Rockin'",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "12:30",
+     "end": "13:00",
+     "show": "Doo Wop / Vintage R&B Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "13:00",
+     "end": "13:30",
+     "show": "Jive, Bop and Stroll",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "13:30",
+     "end": "14:00",
+     "show": "Golden Oldies Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "14:00",
+     "end": "14:30",
+     "show": "Britisch Rock and Roll",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "14:30",
+     "end": "15:15",
+     "show": "Music From Today",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "15:15",
+     "end": "16:00",
+     "show": "Afternoon Starters",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "16:00",
+     "end": "18:00",
+     "show": "Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "18:00",
+     "end": "20:00",
+     "show": "Bouncing Piet",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "20:00",
+     "end": "22:00",
+     "show": "The Big Beat with George Forsythe",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "22:00",
+     "end": "23:00",
+     "show": "Midnight Connection",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "23:00",
+     "end": "00:00",
+     "show": "Replay Live Shows",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "00:00",
+     "end": "08:00",
+     "show": "M - Replay Live Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "08:00",
+     "end": "09:00",
+     "show": "Good Morning All",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "09:00",
+     "end": "12:00",
+     "show": "Graham Canning",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "12:00",
+     "end": "12:30",
+     "show": "Girls Gona Rockin'",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "12:30",
+     "end": "13:00",
+     "show": "Doo Wop / Vintage R&B Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "13:00",
+     "end": "13:30",
+     "show": "Jive, Bop and Stroll",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "13:30",
+     "end": "14:00",
+     "show": "Golden Oldies Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "14:00",
+     "end": "14:30",
+     "show": "Britisch Rock and Roll",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "14:30",
+     "end": "15:15",
+     "show": "Music From Today",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "15:15",
+     "end": "16:00",
+     "show": "Afternoon Starters",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "16:00",
+     "end": "18:00",
+     "show": "Teddyboy Frank",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "18:00",
+     "end": "20:00",
+     "show": "Dynamite Donna",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "20:00",
+     "end": "22:00",
+     "show": "Jim's Rockin' Revue",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "22:00",
+     "end": "23:00",
+     "show": "PM Midnight Connection",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "23:00",
+     "end": "00:00",
+     "show": "Replay Live Shows",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "00:00",
+     "end": "08:00",
+     "show": "Replay Live Shows",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "08:00",
+     "end": "10:00",
+     "show": "Good Morning All",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "10:00",
+     "end": "12:00",
+     "show": "Scott's Rockin' Session (Ernie)",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "12:00",
+     "end": "12:30",
+     "show": "Girls Gona Rockin'",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "12:30",
+     "end": "13:00",
+     "show": "Doo Wop / Vintage R&B Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "13:00",
+     "end": "13:30",
+     "show": "Jive, Bop and Stroll",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "13:30",
+     "end": "14:00",
+     "show": "Golden Oldies Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "14:00",
+     "end": "14:30",
+     "show": "Britisch Rock and Roll",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "14:30",
+     "end": "15:15",
+     "show": "Music From Today",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "15:15",
+     "end": "16:00",
+     "show": "Afternoon Starters",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "16:00",
+     "end": "18:00",
+     "show": "Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "18:00",
+     "end": "20:00",
+     "show": "The StratMan",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "20:00",
+     "end": "21:00",
+     "show": "Yan Townsend Rock and Roll Jukebox",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "21:00",
+     "end": "23:00",
+     "show": "Grims Rock n Roll Time Machine",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "23:00",
+     "end": "00:00",
+     "show": "Midnight Connection",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "00:00",
+     "end": "08:00",
+     "show": "Replay Live Shows",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "08:00",
+     "end": "10:00",
+     "show": "Good Morning All",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "10:00",
+     "end": "11:00",
+     "show": "Rock around the clock",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "11:00",
+     "end": "12:00",
+     "show": "A Mix of All",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "12:00",
+     "end": "12:30",
+     "show": "Girl's Gone Rockin'",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "12:30",
+     "end": "13:00",
+     "show": "Doo Wop / Vintage R&B Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "13:00",
+     "end": "15:00",
+     "show": "Little Ann",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "15:00",
+     "end": "15:15",
+     "show": "Music From Today",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "15:15",
+     "end": "17:00",
+     "show": "Afternoon Starters",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "17:00",
+     "end": "19:00",
+     "show": "Lightnin' Lenny",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "19:00",
+     "end": "21:00",
+     "show": "Rockin G'",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "21:00",
+     "end": "23:00",
+     "show": "Phil Moggy",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "23:00",
+     "end": "00:00",
+     "show": "Midnight Connection",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "00:00",
+     "end": "07:00",
+     "show": "Replay Live Shows",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "07:00",
+     "end": "08:00",
+     "show": "Good Morning All",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "08:00",
+     "end": "10:00",
+     "show": "Jazon Hawthorn Live at Midland Band Club",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "10:00",
+     "end": "12:00",
+     "show": "DJ G",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "12:00",
+     "end": "14:00",
+     "show": "Big Bad Wolf's Red Hot and Blue Jukebox",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "14:00",
+     "end": "16:00",
+     "show": "Red Hot & Rockin'",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "16:00",
+     "end": "17:00",
+     "show": "The Saturday Hop Radio Show",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "17:00",
+     "end": "19:00",
+     "show": "Free Slot",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "19:00",
+     "end": "21:00",
+     "show": "Rockin' Roy Rocke",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "21:00",
+     "end": "23:00",
+     "show": "London Steve's R'n'R Ride",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "23:00",
+     "end": "00:00",
+     "show": "Midnight Connection",
+     "dj": "",
+     "auto": false
     }
    ]
   },
