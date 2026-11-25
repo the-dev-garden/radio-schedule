@@ -1,6 +1,6 @@
 {
- "generated": "2026-11-24T17:18:37Z",
- "source": "seed",
+ "generated": "2026-11-25T18:50:27Z",
+ "source": "scraper",
  "stations": [
   {
    "id": "rockabilly",
@@ -116,7 +116,7 @@
      "dow": 0,
      "start": "14:00",
      "end": "15:00",
-     "show": "Whole Lotta Rockin'",
+     "show": "Whole Lotta Rockin\\'",
      "dj": "Tony Ace",
      "auto": false
     },
@@ -124,7 +124,7 @@
      "dow": 0,
      "start": "15:00",
      "end": "16:00",
-     "show": "Lucky's Lost Rockers",
+     "show": "Lucky\\'s Lost Rockers",
      "dj": "Lucky Sid",
      "auto": false
     },
@@ -221,7 +221,7 @@
      "start": "04:00",
      "end": "05:00",
      "show": "Dixie Rebel Bop",
-     "dj": "Eddie Cesc or Alex Ruiz",
+     "dj": "Eddie Cesc or DJ Alex Ruiz",
      "auto": false
     },
     {
@@ -452,8 +452,8 @@
      "dow": 2,
      "start": "16:00",
      "end": "17:00",
-     "show": "Rock Around the Jukebox",
-     "dj": "Andy Noens aka DJ Andy (Belgium)",
+     "show": "Rock Around the JUkebox",
+     "dj": "Andy Noens , AKA DJ Andy (Belgium)",
      "auto": false
     },
     {
@@ -532,7 +532,7 @@
      "dow": 3,
      "start": "05:00",
      "end": "06:00",
-     "show": "Sound of the Fifties",
+     "show": "Sound of the fifties",
      "dj": "Rockin Nico (FR)",
      "auto": false
     },
@@ -564,7 +564,7 @@
      "dow": 3,
      "start": "09:00",
      "end": "10:00",
-     "show": "Doo Wop Heaven",
+     "show": "DooWop Heaven",
      "dj": "Leon",
      "auto": false
     },
@@ -612,7 +612,7 @@
      "dow": 3,
      "start": "16:00",
      "end": "17:00",
-     "show": "The Sound that Counts",
+     "show": "the Sound that Counts",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -644,7 +644,7 @@
      "dow": 3,
      "start": "20:00",
      "end": "21:00",
-     "show": "To the World",
+     "show": "To the  World",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -660,7 +660,7 @@
      "dow": 3,
      "start": "22:00",
      "end": "23:00",
-     "show": "Whole Lotta Rockin'",
+     "show": "Whole Lotta Rockin\\'",
      "dj": "Tony Ace",
      "auto": false
     },
@@ -724,7 +724,7 @@
      "dow": 4,
      "start": "10:00",
      "end": "12:00",
-     "show": "American Hot Wax RnR Show",
+     "show": "American Hot Wax RnR show",
      "dj": "Crock Higgs",
      "auto": false
     },
@@ -764,8 +764,8 @@
      "dow": 4,
      "start": "16:00",
      "end": "17:00",
-     "show": "Dixie Rebel Bop (monthly)",
-     "dj": "Eddie Cesc or Alex Ruiz",
+     "show": "Dixie Rebel Bop / Monthly",
+     "dj": "Eddie Cesc or DJ Alex Ruiz",
      "auto": false
     },
     {
@@ -852,7 +852,7 @@
      "dow": 5,
      "start": "04:00",
      "end": "05:00",
-     "show": "Mint Cream Show or the Sound that Counts",
+     "show": "Mint Cream Show the Sound that Counts",
      "dj": "Amy Dee (USA) or Auto DJ",
      "auto": false
     },
@@ -869,8 +869,8 @@
      "start": "06:00",
      "end": "07:00",
      "show": "The Sound That Counts",
-     "dj": "Auto DJ",
-     "auto": true
+     "dj": "To the World",
+     "auto": false
     },
     {
      "dow": 5,
@@ -1020,7 +1020,7 @@
      "dow": 6,
      "start": "04:00",
      "end": "05:00",
-     "show": "Doo Wop Heaven",
+     "show": "DooWop Heaven",
      "dj": "Leon",
      "auto": false
     },
@@ -1044,8 +1044,8 @@
      "dow": 6,
      "start": "08:00",
      "end": "09:00",
-     "show": "Dixie Rebel Bop",
-     "dj": "Eddie Cesc or Alex Ruiz",
+     "show": "Dixie Rebel  Bop",
+     "dj": "Eddie Cesc or DJ Alex Ruiz",
      "auto": false
     },
     {
