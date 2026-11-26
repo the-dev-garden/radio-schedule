@@ -22,6 +22,8 @@
     favOnly: false,
     favs: new Set(store.get("favs", [])),
     q: "",
+    playing: null,
+    pstatus: "",
   };
 
   // ---------- UK time formatting ----------
@@ -65,7 +67,7 @@
       const curIds = new Set(cur);
       const next = mine.filter((o) => o.start > now && !curIds.has(o)).slice(0, 3);
 
-      html += `<article class="card"><h2>${cur.length ? '<span class="live" title="On air"></span>' : ""}${esc(st.name)}<a href="${esc(st.url)}" target="_blank" rel="noopener">station site &#8599;</a></h2>`;
+      html += `<article class="card"><h2>${cur.length ? '<span class="live" title="On air"></span>' : ""}${esc(st.name)}${playBtn(st)}<a href="${esc(st.site || st.url)}" target="_blank" rel="noopener">station site &#8599;</a></h2>`;
       if (!st.shows || !st.shows.length) {
         html += `<div class="meta">No schedule loaded for this station yet.</div>`;
       } else if (!cur.length) {
@@ -128,7 +130,7 @@
     for (const st of state.data.stations) {
       if (state.stations.size && !state.stations.has(st.id)) continue;
       const list = occ.filter((o) => o.station === st.id && dayKey(o.start) === target && !(state.hideAuto && o.auto));
-      html += `<section class="card"><h2>${esc(st.name)}</h2>`;
+      html += `<section class="card"><h2>${esc(st.name)}${playBtn(st)}</h2>`;
       if (!st.shows || !st.shows.length) html += `<div class="meta">No schedule loaded for this station yet.</div>`;
       else if (!list.length) html += `<div class="meta">Nothing listed${state.hideAuto ? " (Auto DJ hidden)" : ""}.</div>`;
       else html += list.map((o) => slotHtml(o)).join("");
@@ -177,6 +179,73 @@
       `Shows can change at short notice, so check the station's own page too.`;
   }
 
+  // ---------- live audio ----------
+  const audio = new Audio();
+  audio.preload = "none";
+  let tryList = [], tryIdx = 0;
+  const fresh = (u) => u.replace(/([?&](?:t|nocache)=)\d+/, "$1" + Date.now()); // cache-busters
+
+  function stationById(id) { return state.data.stations.find((s) => s.id === id); }
+  function playBtn(st) {
+    if (!st.streams || !st.streams.length) return "";
+    const on = state.playing === st.id;
+    return ` <button class="play" data-play="${esc(st.id)}" aria-pressed="${on}" aria-label="${on ? "Stop" : "Play"} ${esc(st.name)}" title="${on ? "Stop" : "Listen live"}">${on ? "&#9632;" : "&#9654;"}</button>`;
+  }
+  function loadStream() {
+    audio.src = fresh(tryList[tryIdx]);
+    const p = audio.play();
+    if (p && p.catch) p.catch(() => {}); // failures arrive via the "error" event
+  }
+  function startPlay(id) {
+    const st = stationById(id);
+    if (!st || !st.streams || !st.streams.length) return;
+    state.playing = id; state.pstatus = "Connecting…";
+    tryList = st.streams; tryIdx = 0;
+    loadStream(); render();
+  }
+  function stopPlay() {
+    state.playing = null;
+    audio.pause(); audio.removeAttribute("src"); audio.load();
+    render();
+  }
+  function togglePlay(id) { state.playing === id ? stopPlay() : startPlay(id); }
+
+  audio.addEventListener("error", () => {
+    if (!state.playing) return;
+    if (tryIdx + 1 < tryList.length) { tryIdx++; loadStream(); return; }
+    state.pstatus = "fail"; renderPlayer();
+  });
+  audio.addEventListener("playing", () => { if (state.playing) { state.pstatus = "Playing live"; renderPlayer(); } });
+  audio.addEventListener("waiting", () => { if (state.playing) { state.pstatus = "Buffering…"; renderPlayer(); } });
+
+  function renderPlayer() {
+    const box = $("player");
+    if (!box) return;
+    if (!state.playing || !state.data) {
+      box.hidden = true; document.body.classList.remove("has-player"); return;
+    }
+    const st = stationById(state.playing);
+    const now = Date.now();
+    const live = occ.filter((o) => o.station === st.id && o.start <= now && o.end > now).sort((a, b) => a.auto - b.auto || b.start - a.start)[0];
+    const onAir = live ? live.show + (live.dj && !live.auto ? " · " + live.dj : "") : "";
+    let status;
+    if (state.pstatus === "fail") {
+      const direct = fresh(tryList[tryList.length - 1]);
+      status = `Couldn't play this stream here. <a href="${esc(direct)}" target="_blank" rel="noopener">Open it directly &#8599;</a>`;
+    } else {
+      status = (state.pstatus === "Playing live" ? '<span class="eq">&#9679;</span> ' : "") + esc(state.pstatus || "") + (onAir ? " &middot; " + esc(onAir) : "");
+    }
+    box.innerHTML = `<button class="play" id="stopBtn" aria-pressed="true" aria-label="Stop" title="Stop">&#9632;</button><div class="pinfo"><b>${esc(st.name)}</b><span class="meta">${status}</span></div>`;
+    box.hidden = false; document.body.classList.add("has-player");
+    if ("mediaSession" in navigator && window.MediaMetadata) {
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({ title: live ? live.show : "Live", artist: st.name });
+        navigator.mediaSession.setActionHandler("pause", stopPlay);
+        navigator.mediaSession.setActionHandler("stop", stopPlay);
+      } catch (e) { /* not supported */ }
+    }
+  }
+
   // ---------- render ----------
   function render() {
     if (!state.data) return;
@@ -184,6 +253,7 @@
     if (state.view === "now") renderNow();
     else if (state.view === "day") renderDay();
     else renderFind();
+    renderPlayer();
   }
   function setView(v) {
     state.view = v;
@@ -194,6 +264,9 @@
 
   // ---------- events ----------
   document.addEventListener("click", (e) => {
+    const pb = e.target.closest("[data-play]");
+    if (pb) return togglePlay(pb.dataset.play);
+    if (e.target.closest("#stopBtn")) return stopPlay();
     const tab = e.target.closest("nav.tabs button");
     if (tab) return setView(tab.dataset.view);
 
