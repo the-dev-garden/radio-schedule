@@ -335,14 +335,21 @@ def parse_rockin50s(html):
 
 STATIONS = {
     "rockabilly":   dict(name="Rockabilly Radio", tz="Europe/London", url="https://www.rockabillyradio.net/schedule/",
+                         streams=["https://rradio.fastserv.com/hifi"],
                          fetch=lambda u: get(u), parse=parse_rockabilly),
     "rockin247":    dict(name="Rockin 247 Radio", tz="UTC", url="https://rockin247radio.com/schedule/",
+                         streams=["https://s4.radio.co/s0f3a44a66/listen"],
                          fetch=lambda u: "", parse=parse_rockin247),
     "splinterwood": dict(name="SplinterWood Radio", tz="Europe/London", url="https://www.splinterwoodradio.uk/presenter-schedule/",
+                         site="https://www.splinterwoodradio.uk/index.html",
+                         streams=["https://securestreams6.autopo.st:2302/listen.mp3?t=1795719521325"],
                          fetch=lambda u: get(u), parse=parse_splinterwood),
     "rockin50s":    dict(name="Rockin' 50s", tz="Europe/London", url="https://www.rockin50s.uk/schedule.php",
+                         streams=["https://eu11.fastcast4u.com:1090/;?type=http&nocache=1778480495"],
                          fetch=lambda u: get(u), parse=parse_rockin50s),
     "rrb":          dict(name="Rockin' Rhythm & Blues", tz="America/New_York", url="https://rockinrhythmandbluesradio.com/schedule-usa-eastern/",
+                         # tried in order; the plain-http one only works if the page itself is http
+                         streams=["https://s6.voscast.com:11632/live", "http://s6.voscast.com:11632/live"],
                          fetch=lambda u: render(u, "a[href*='/show/']"), parse=parse_rrb),
 }
 
@@ -354,7 +361,9 @@ def main(only):
     result, problems = [], []
     for sid, cfg in STATIONS.items():
         prev = old_by_id.get(sid, {})
-        entry = {"id": sid, "name": cfg["name"], "tz": cfg["tz"], "url": cfg["url"], "shows": prev.get("shows", [])}
+        entry = {"id": sid, "name": cfg["name"], "tz": cfg["tz"], "url": cfg["url"],
+                 "site": cfg.get("site", cfg["url"]), "streams": cfg.get("streams", []),
+                 "shows": prev.get("shows", [])}
         if prev.get("note"): entry["note"] = prev["note"]
         if only and sid not in only:
             result.append(entry); continue
