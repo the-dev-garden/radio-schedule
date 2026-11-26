@@ -348,8 +348,9 @@ STATIONS = {
                          streams=["https://eu11.fastcast4u.com:1090/;?type=http&nocache=1778480495"],
                          fetch=lambda u: get(u), parse=parse_rockin50s),
     "rrb":          dict(name="Rockin' Rhythm & Blues", tz="America/New_York", url="https://rockinrhythmandbluesradio.com/schedule-usa-eastern/",
-                         # tried in order; the plain-http one only works if the page itself is http
-                         streams=["https://s6.voscast.com:11632/live", "http://s6.voscast.com:11632/live"],
+                         # tried in order: our https relay (Cloudflare Worker), then the station's own address.
+                         # If the station provides an https address, put it first and the Worker second.
+                         streams=["https://rrb-stream.air2810.workers.dev", "http://s6.voscast.com:11632/live"],
                          fetch=lambda u: render(u, "a[href*='/show/']"), parse=parse_rrb),
 }
 
