@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26T04:21:02Z",
+ "generated": "2026-11-26T19:09:19Z",
  "source": "scraper",
  "stations": [
   {
@@ -7,6 +7,10 @@
    "name": "Rockabilly Radio",
    "tz": "Europe/London",
    "url": "https://www.rockabillyradio.net/schedule/",
+   "site": "https://www.rockabillyradio.net/schedule/",
+   "streams": [
+    "https://rradio.fastserv.com/hifi"
+   ],
    "shows": [
     {
      "dow": 0,
@@ -1159,6 +1163,10 @@
    "name": "Rockin 247 Radio",
    "tz": "UTC",
    "url": "https://rockin247radio.com/schedule/",
+   "site": "https://rockin247radio.com/schedule/",
+   "streams": [
+    "https://s4.radio.co/s0f3a44a66/listen"
+   ],
    "shows": [
     {
      "dow": 0,
@@ -1778,6 +1786,14 @@
     },
     {
      "dow": 4,
+     "start": "17:00",
+     "end": "18:00",
+     "show": "Daz",
+     "dj": "Daz",
+     "auto": false
+    },
+    {
+     "dow": 4,
      "start": "19:00",
      "end": "20:00",
      "show": "Carries Crazy Party",
@@ -2127,6 +2143,10 @@
    "name": "SplinterWood Radio",
    "tz": "Europe/London",
    "url": "https://www.splinterwoodradio.uk/presenter-schedule/",
+   "site": "https://www.splinterwoodradio.uk/index.html",
+   "streams": [
+    "https://securestreams6.autopo.st:2302/listen.mp3?t=1795719521325"
+   ],
    "shows": [
     {
      "dow": 0,
@@ -2639,6 +2659,10 @@
    "name": "Rockin' 50s",
    "tz": "Europe/London",
    "url": "https://www.rockin50s.uk/schedule.php",
+   "site": "https://www.rockin50s.uk/schedule.php",
+   "streams": [
+    "https://eu11.fastcast4u.com:1090/;?type=http&nocache=1778480495"
+   ],
    "shows": [
     {
      "dow": 0,
@@ -3391,6 +3415,11 @@
    "name": "Rockin' Rhythm & Blues",
    "tz": "America/New_York",
    "url": "https://rockinrhythmandbluesradio.com/schedule-usa-eastern/",
+   "site": "https://rockinrhythmandbluesradio.com/schedule-usa-eastern/",
+   "streams": [
+    "https://s6.voscast.com:11632/live",
+    "http://s6.voscast.com:11632/live"
+   ],
    "shows": [
     {
      "dow": 0,
