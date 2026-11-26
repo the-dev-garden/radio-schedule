@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-26T19:09:19Z",
+ "generated": "2026-11-26T20:29:12Z",
  "source": "scraper",
  "stations": [
   {
@@ -3417,7 +3417,7 @@
    "url": "https://rockinrhythmandbluesradio.com/schedule-usa-eastern/",
    "site": "https://rockinrhythmandbluesradio.com/schedule-usa-eastern/",
    "streams": [
-    "https://s6.voscast.com:11632/live",
+    "https://rrb-stream.air2810.workers.dev",
     "http://s6.voscast.com:11632/live"
    ],
    "shows": [
