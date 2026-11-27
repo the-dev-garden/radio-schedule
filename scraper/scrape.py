@@ -333,6 +333,18 @@ def parse_rockin50s(html):
     return out
 
 
+# ---------------- Stations with no machine-readable schedule (e.g. a picture): manual/<id>.json ----------------
+def manual_parser(sid):
+    def parse(_unused=None):
+        path = ROOT / "manual" / (sid + ".json")
+        data = json.loads(path.read_text())
+        shows = data.get("shows", [])
+        if not shows:
+            raise ValueError("manual/%s.json has no shows" % sid)
+        return shows
+    return parse
+
+
 STATIONS = {
     "rockabilly":   dict(name="Rockabilly Radio", tz="Europe/London", url="https://www.rockabillyradio.net/schedule/",
                          streams=["https://rradio.fastserv.com/hifi"],
@@ -347,6 +359,10 @@ STATIONS = {
     "rockin50s":    dict(name="Rockin' 50s", tz="Europe/London", url="https://www.rockin50s.uk/schedule.php",
                          streams=["https://eu11.fastcast4u.com:1090/;?type=http&nocache=1778480495"],
                          fetch=lambda u: get(u), parse=parse_rockin50s),
+    "zombiedog":    dict(name="Zombie Dog Radio", tz="Europe/London", url="https://zombiedogradio.com",
+                         min_shows=1,       # timetable is a picture; typed into manual/zombiedog.json
+                         streams=["https://fast.citrus3.com:8556/stream"],
+                         fetch=lambda u: "", parse=manual_parser("zombiedog")),
     "rrb":          dict(name="Rockin' Rhythm & Blues", tz="America/New_York", url="https://rockinrhythmandbluesradio.com/schedule-usa-eastern/",
                          # tried in order: our https relay (Cloudflare Worker), then the station's own address.
                          # If the station provides an https address, put it first and the Worker second.
@@ -373,8 +389,9 @@ def main(only):
             for s in shows:
                 s["auto"] = bool(re.match(r"auto\s*dj", s["dj"], re.I))
             shows.sort(key=lambda s: (s["dow"], s["start"], s["end"]))
-            if len(shows) < MIN_SHOWS:
-                raise ValueError("only %d shows parsed (expected %d+)" % (len(shows), MIN_SHOWS))
+            need = cfg.get("min_shows", MIN_SHOWS)
+            if len(shows) < need:
+                raise ValueError("only %d shows parsed (expected %d+)" % (len(shows), need))
             entry["shows"] = shows
             entry.pop("note", None)
             print("ok   %-13s %d shows" % (sid, len(shows)))
