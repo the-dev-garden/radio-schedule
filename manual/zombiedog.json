@@ -1,0 +1,54 @@
+{
+ "_help": "Zombie Dog Radio timetable, copied from the image on zombiedogradio.com. UK time. dow: 0=Sun..6=Sat. Edit this file when the station changes its timetable.",
+ "shows": [
+  {
+   "dow": 1,
+   "start": "19:00",
+   "end": "22:00",
+   "show": "Live DJ set",
+   "dj": "DJ Max"
+  },
+  {
+   "dow": 2,
+   "start": "19:00",
+   "end": "22:00",
+   "show": "Live DJ set",
+   "dj": "Dr.Sick Puppy"
+  },
+  {
+   "dow": 3,
+   "start": "19:30",
+   "end": "21:30",
+   "show": "Live DJ set",
+   "dj": "Vodka Goddess"
+  },
+  {
+   "dow": 4,
+   "start": "19:00",
+   "end": "22:00",
+   "show": "Live DJ set",
+   "dj": "Scarlet DawnDJ"
+  },
+  {
+   "dow": 5,
+   "start": "20:00",
+   "end": "00:00",
+   "show": "Live DJ set",
+   "dj": "DJ Deevil"
+  },
+  {
+   "dow": 0,
+   "start": "10:00",
+   "end": "13:30",
+   "show": "Live DJ set",
+   "dj": "DJ Devil"
+  },
+  {
+   "dow": 0,
+   "start": "19:00",
+   "end": "22:00",
+   "show": "Live DJ set",
+   "dj": "Zykowilly"
+  }
+ ]
+}
