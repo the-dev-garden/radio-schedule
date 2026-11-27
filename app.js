@@ -312,6 +312,8 @@
 
   load().then((data) => {
     state.data = data;
+    // Stations in alphabetical order (ignoring punctuation and case), whatever order the data arrives in.
+    data.stations.sort((a, b) => a.name.localeCompare(b.name, "en-GB", { sensitivity: "base", ignorePunctuation: true }));
     renderChips(); renderFoot(); rebuild(); sizeHeader(); render();
     setInterval(() => { rebuild(); render(); }, 30000);
     document.addEventListener("visibilitychange", () => { if (!document.hidden) { rebuild(); render(); } });
