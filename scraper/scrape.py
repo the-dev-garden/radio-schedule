@@ -316,6 +316,80 @@ def parse_rockin247(_unused=None):
     return out
 
 
+# ---------------- SplinterWood (new home-page design): day tabs (#tabs) fill a slot list (#slots) via JavaScript ----------------
+RANGE = re.compile(r"(\d{1,2})(?:[:.](\d{2}))?\s*([ap]m)?\s*(?:[^\d:.\w]{1,6}|to)\s*(\d{1,2})(?:[:.](\d{2}))?\s*([ap]m)?", re.I)
+BADGES = {"on air", "live", "now", "on air now", "next", "up next", "now playing", "on now"}
+
+
+def _h24(h, m, ap):
+    h, m = int(h), int(m or 0)
+    if ap:
+        ap = ap.lower()
+        if ap == "pm" and h < 12: h += 12
+        if ap == "am" and h == 12: h = 0
+    return "%02d:%02d" % (h % 24, m)
+
+
+def splinterwood_fetch(url):
+    """Open the page in a browser, click each day tab, and collect the text of each slot shown."""
+    from playwright.sync_api import sync_playwright
+    problems, data = [], []
+    with sync_playwright() as p:
+        b = p.chromium.launch()
+        pg = b.new_page(user_agent=UA["User-Agent"], locale="en-GB", viewport={"width": 1280, "height": 900})
+        pg.on("console", lambda m: problems.append("console: " + m.text) if m.type == "error" else None)
+        pg.on("pageerror", lambda e: problems.append("pageerror: %s" % e))
+        pg.on("requestfailed", lambda r: problems.append("requestfailed: " + r.url))
+        try:
+            pg.goto(url, wait_until="domcontentloaded", timeout=60000)
+            pg.wait_for_selector("#tabs button, #tabs [role='tab']", timeout=30000)
+        except Exception as e:
+            b.close()
+            raise RuntimeError("day tabs never appeared (%s). Page problems: %s" % (str(e).splitlines()[0], problems[:8]))
+        tabs = pg.locator("#tabs button, #tabs [role='tab']")
+        for i in range(tabs.count()):
+            tab = tabs.nth(i)
+            label = tab.inner_text().strip()
+            tab.click()
+            pg.wait_for_timeout(300)
+            items = pg.eval_on_selector_all("#slots > li", """els => els.map(li => {
+                const out = [], w = document.createTreeWalker(li, NodeFilter.SHOW_TEXT);
+                while (w.nextNode()) { const t = w.currentNode.textContent.replace(/\\s+/g, ' ').trim(); if (t) out.push(t); }
+                return out.join('\\n'); })""")
+            data.append({"tab": label, "items": items})
+        b.close()
+    # a small sample so the layout can be checked by eye after a run
+    d = ROOT / "debug"
+    d.mkdir(exist_ok=True)
+    sample = "\n\n".join("TAB %r: %d slots\n%s" % (x["tab"], len(x["items"]), "\n---\n".join(x["items"][:3])) for x in data)
+    (d / "splinterwood.txt").write_text("Sample of what the scraper read (first 3 slots per day):\n\n" + sample + "\n")
+    return json.dumps(data)
+
+
+def parse_splinterwood_slots(raw):
+    out = []
+    for day in json.loads(raw):
+        m = re.match(r"\s*(mon|tue|wed|thu|fri|sat|sun)", day["tab"], re.I)
+        if not m:
+            raise ValueError("SplinterWood: cannot read day tab label %r" % day["tab"])
+        dow = D3[m[1].lower()]
+        for text in day["items"]:
+            r = RANGE.search(text)
+            if not r:
+                continue
+            ap1 = r[3] or r[6]
+            start, end = _h24(r[1], r[2], ap1), _h24(r[4], r[5], r[6])
+            rest = (text[:r.start()] + "\n" + text[r.end():]).splitlines()
+            lines = [l.strip(" \t\u00b7|-\u2013\u2014,") for l in rest]
+            lines = [l for l in lines if l and l.lower() not in BADGES]
+            title = lines[0] if lines else "Show"
+            dj = lines[1] if len(lines) > 1 else ""
+            if re.match(r"auto\s*dj", title, re.I) and not dj:
+                dj = "Auto DJ"
+            out.append(show(dow, start, end, title, dj))
+    return out
+
+
 # ---------------- Rockin' 50s: plain text, day headings, "8.00-10.00 Show name", UK time (assumed) ----------------
 def parse_rockin50s(html):
     soup = BeautifulSoup(html, "html.parser")
@@ -420,10 +494,10 @@ STATIONS = {
     "rockin247":    dict(name="Rockin 247 Radio", tz="UTC", url="https://rockin247radio.com/schedule/",
                          streams=["https://s4.radio.co/s0f3a44a66/listen"],
                          fetch=lambda u: "", parse=parse_rockin247),
-    "splinterwood": dict(browser_fallback=True, name="SplinterWood Radio", tz="Europe/London", url="https://www.splinterwoodradio.uk/",   # schedule is the #schedule section of the home page
+    "splinterwood": dict(name="SplinterWood Radio", tz="Europe/London", url="https://www.splinterwoodradio.uk/",   # the #schedule section of the home page
                          site="https://www.splinterwoodradio.uk/index.html",
                          streams=["https://securestreams6.autopo.st:2302/listen.mp3?t=1795719521325"],
-                         fetch=lambda u: get(u), parse=parse_splinterwood),
+                         fetch=splinterwood_fetch, parse=parse_splinterwood_slots),
     "rockin50s":    dict(browser_fallback=True, name="Rockin' 50s", tz="Europe/London", url="https://www.rockin50s.uk/schedule.php",
                          streams=["https://eu11.fastcast4u.com:1090/;?type=http&nocache=1778480495"],
                          fetch=lambda u: get(u), parse=parse_rockin50s),
@@ -451,11 +525,17 @@ def dump_debug(sid, raw, err):
     if isinstance(raw, str) and raw:
         try:
             soup = BeautifulSoup(raw, "html.parser")
+            # scripts often hold the data on pages that build their schedule with JavaScript
+            srcs = [t.get("src") for t in soup.find_all("script") if t.get("src")]
+            inline = [t.get_text() for t in soup.find_all("script") if not t.get("src") and t.get_text().strip()]
+            hits = [x for x in inline if re.search(r"schedule|presenter|auto\s*dj|monday|sunday", x, re.I)]
+            script_part = "\n\n=== SCRIPT SRC ===\n%s\n\n=== INLINE SCRIPTS mentioning schedule/presenters (%d of %d) ===\n%s" % (
+                "\n".join(srcs), len(hits), len(inline), "\n\n----\n\n".join(h.strip()[:7000] for h in hits[:4]))
             for t in soup(["script", "style"]):
                 t.decompose()
             lines = [l.strip() for l in soup.get_text("\n").splitlines() if l.strip()]
             body = "HTML length: %d\ntables: %d\ncontains '/programs/': %s\n\n=== VISIBLE TEXT (first 250 lines) ===\n%s\n\n=== BODY MARKUP (first 5000 chars) ===\n%s" % (
-                len(raw), len(soup.find_all("table")), "/programs/" in raw, "\n".join(lines[:250]), str(soup.body or soup)[:5000])
+                len(raw), len(soup.find_all("table")), "/programs/" in raw, "\n".join(lines[:250]), str(soup.body or soup)[:5000]) + script_part
         except Exception as e:
             body = "could not summarise: %s" % e
     (d / (sid + ".txt")).write_text("ERROR: %s\n\n%s\n" % (err, body))
