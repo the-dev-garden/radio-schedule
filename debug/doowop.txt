@@ -1,0 +1,61 @@
+Events read from Tockify (UTC), first 7 days:
+Sat 21 Nov 10:00 -> 14:00  Morning wake
+Sat 21 Nov 14:00 -> 16:00  Darrin's Jukebox Memories
+Sat 21 Nov 16:00 -> 18:00  Squire's Night Train Memories: sounds of the cities
+Sat 21 Nov 18:00 -> 21:00  Joni O's Steppin' Out Party
+Sat 21 Nov 21:00 -> 23:00  Glen Fisher's Doo Wop Revival
+Sat 21 Nov 23:00 -> 01:00  Dr D WFIT (Doowop, Soul and Rock N Roll)
+Sun 22 Nov 01:00 -> 04:00  Saturday Night Romance
+Sun 22 Nov 04:00 -> 05:00  Lou's Blues & Beyond
+Sun 22 Nov 06:00 -> 10:00  DJ Jerry B (Backseat Memories)
+Sun 22 Nov 10:00 -> 12:00  Morning Wakeup
+Sun 22 Nov 12:00 -> 14:00  DJ Mike Miller (Harmony Street)
+Sun 22 Nov 14:00 -> 16:00  Mama Lee (Jump & Jive)
+Sun 22 Nov 16:00 -> 18:00  Pete R's Brooklyn Sock Hop
+Sun 22 Nov 18:00 -> 21:00  Arlene's Rockin' Kitchen (replay)
+Sun 22 Nov 21:00 -> 23:00  CDR Greg's Golden Age of RnR
+Sun 22 Nov 23:00 -> 01:00  Vocal Point - a capella with DJ Lou
+Mon 23 Nov 01:00 -> 02:00  Ned's Sunday Evening Classics
+Mon 23 Nov 02:00 -> 04:00  King Arthur
+Mon 23 Nov 04:00 -> 06:00  Squire's Night Train Memories - sounds of the cities
+Mon 23 Nov 06:00 -> 11:00  DJ Jerry B (Backseat Memories)
+Mon 23 Nov 11:00 -> 13:00  Morning Wakeup
+Mon 23 Nov 13:00 -> 15:00  Morning Wakeup
+Mon 23 Nov 15:00 -> 17:00  King Arthur (Crown Sounds)
+Mon 23 Nov 17:00 -> 19:00  Lunch Date with Joni-O
+Mon 23 Nov 19:00 -> 22:00  Afternoon dance party
+Mon 23 Nov 22:00 -> 01:00  Under the Streetlight (rebroadcast)
+Tue 24 Nov 01:00 -> 03:00  Darrin's Jukebox Memories
+Tue 24 Nov 03:00 -> 06:00  Evening Wind Down
+Tue 24 Nov 06:00 -> 11:00  DJ Jerry B (Backseat Memories)
+Tue 24 Nov 11:00 -> 13:00  Morning wakeup
+Tue 24 Nov 13:00 -> 15:00  Mama Lee - Jump & Jive
+Tue 24 Nov 15:00 -> 17:00  King Arthur (Crown Sounds)
+Tue 24 Nov 17:00 -> 19:00  Lunch Date with Joni-O
+Tue 24 Nov 19:00 -> 22:00  Mike G (Mike's Wax Trax)
+Tue 24 Nov 22:00 -> 01:00  Evening shadows falling
+Wed 25 Nov 01:00 -> 03:00  DJ Brad (A Woppin' Good Time)
+Wed 25 Nov 03:00 -> 06:00  Evening Wind Down
+Wed 25 Nov 06:00 -> 11:00  DJ Jerry B (Backseat Memories)
+Wed 25 Nov 11:00 -> 13:00  Morning wakeup
+Wed 25 Nov 13:00 -> 15:00  Glen Fisher's Doo Wop Revival
+Wed 25 Nov 15:00 -> 17:00  King Arthur (Crown Sounds)
+Wed 25 Nov 17:00 -> 19:00  Lunch Date with Joni-O
+Wed 25 Nov 19:00 -> 22:00  Pete R's Brooklyn Sock Hop
+Wed 25 Nov 22:00 -> 01:00  Under the streetlight
+Thu 26 Nov 01:00 -> 03:00  The Queen Of Doowop
+Thu 26 Nov 03:00 -> 06:00  Evening Wind Down
+Thu 26 Nov 06:00 -> 11:00  DJ Jerry B (Backseat Memories)
+Thu 26 Nov 11:00 -> 13:00  Morning Wakeup
+Thu 26 Nov 13:00 -> 15:00  CDR Greg's Golden Age of RnR
+Thu 26 Nov 15:00 -> 17:00  King Arthur (Crown Sounds)
+Thu 26 Nov 17:00 -> 19:00  Lunch Date with Joni-O
+Thu 26 Nov 19:00 -> 22:00  Arlene's Rockin' Kitchen
+Thu 26 Nov 22:00 -> 01:00  Mike G (Mike's Wax Trax) rebroadcast
+Fri 27 Nov 01:00 -> 03:00  The Rockin' Don Show
+Fri 27 Nov 03:00 -> 06:00  Evening Wind Down
+Fri 27 Nov 06:00 -> 11:00  DJ Jerry B (Backseat Memories)
+Fri 27 Nov 11:00 -> 13:00  Morning wakeup
+Fri 27 Nov 13:00 -> 15:00  DJ Brad (A Woppin' Good Time)
+Fri 27 Nov 15:00 -> 17:00  King Arthur (Crown Sounds)
+Fri 27 Nov 17:00 -> 19:00  Lunch Date with Joni-O
