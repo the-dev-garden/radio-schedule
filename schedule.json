@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-28T04:13:12Z",
+ "generated": "2026-11-28T10:55:06Z",
  "source": "scraper",
  "stations": [
   {
@@ -3409,6 +3409,17 @@
      "auto": false
     }
    ]
+  },
+  {
+   "id": "wwoz",
+   "name": "WWOZ New Orleans",
+   "tz": "America/Chicago",
+   "url": "https://www.wwoz.org/schedule",
+   "site": "https://www.wwoz.org",
+   "streams": [
+    "https://wwoz-sc.streamguys1.com/wwoz-hi.mp3"
+   ],
+   "shows": []
   },
   {
    "id": "zombiedog",
