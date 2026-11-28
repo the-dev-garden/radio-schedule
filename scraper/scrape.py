@@ -482,6 +482,82 @@ def wwoz_fetch(url):
     return render(url, "a[href*='/programs/']")      # fall back to a real browser if the list is script-built
 
 
+# ---------------- Doowop Radio: Tockify calendar (events carry UTC millisecond timestamps) ----------------
+def tockify_events(blobs):
+    """Pull (start_ms, end_ms, title) out of Tockify JSON, wherever it sits in the structure."""
+    def txt(x):
+        if isinstance(x, dict):
+            return str(x.get("text") or "")
+        return str(x or "")
+    out = []
+    for d in _walk(blobs):
+        when = d.get("when")
+        if not (isinstance(when, dict) and isinstance(when.get("start"), dict) and "millis" in when["start"]):
+            continue
+        end = when.get("end") if isinstance(when.get("end"), dict) else {}
+        content = d.get("content") if isinstance(d.get("content"), dict) else {}
+        title = txt(content.get("summary")) or txt(d.get("summary")) or txt(d.get("title"))
+        if title and end.get("millis"):
+            out.append((int(when["start"]["millis"]), int(end["millis"]), title.strip()))
+    return out
+
+
+def doowop_fetch(url):
+    import time
+    start_ms = int(time.time() // 86400 * 86400 * 1000)            # midnight UTC today, so today's earlier slots are included
+    try:
+        r = requests.get("https://tockify.com/api/ngevent", headers=UA, timeout=30,
+                         params={"calname": "doowop", "max": 300, "start-ms": start_ms})
+        r.raise_for_status()
+        data = r.json()
+        if tockify_events(data):
+            return json.dumps(data)
+    except Exception as e:
+        print("Doowop: direct feed failed (%s); trying browser" % e, file=sys.stderr)
+    from playwright.sync_api import sync_playwright
+    blobs = []
+    with sync_playwright() as p:
+        b = p.chromium.launch()
+        pg = b.new_page(user_agent=UA["User-Agent"], locale="en-GB")
+
+        def on_resp(r):
+            try:
+                if "json" in r.headers.get("content-type", ""):
+                    blobs.append(r.json())
+            except Exception:
+                pass
+
+        pg.on("response", on_resp)
+        pg.goto(url, wait_until="domcontentloaded", timeout=60000)
+        pg.wait_for_timeout(8000)
+        b.close()
+    return json.dumps(blobs)
+
+
+def parse_doowop(raw):
+    events = tockify_events(json.loads(raw))
+    if not events:
+        return []
+    utc = datetime.timezone.utc
+    first = min(e[0] for e in events) // 86400000                  # day number of the earliest event
+    seen, out, sample = set(), [], []
+    for start, end, title in sorted(events):
+        if (start // 86400000) - first >= 7:                       # first 7 days = the repeating weekly pattern
+            continue
+        a = datetime.datetime.fromtimestamp(start / 1000, utc)
+        b = datetime.datetime.fromtimestamp(end / 1000, utc)
+        name, _, host = re.split(r"(\s+with\s+)", title, maxsplit=1, flags=re.I) if re.search(r"\s+with\s+", title, re.I) else (title, "", "")
+        key = ((a.weekday() + 1) % 7, a.strftime("%H:%M"), b.strftime("%H:%M"), name)
+        if key not in seen:
+            seen.add(key)
+            out.append(show(key[0], key[1], key[2], name, host))
+        sample.append("%s -> %s  %s" % (a.strftime("%a %d %b %H:%M"), b.strftime("%H:%M"), title))
+    d = ROOT / "debug"
+    d.mkdir(exist_ok=True)
+    (d / "doowop.txt").write_text("Events read from Tockify (UTC), first 7 days:\n" + "\n".join(sample[:60]) + "\n")
+    return out
+
+
 # ---------------- Stations with no machine-readable schedule (e.g. a picture): manual/<id>.json ----------------
 def manual_parser(sid):
     def parse(_unused=None):
@@ -508,6 +584,11 @@ STATIONS = {
     "rockin50s":    dict(browser_fallback=True, name="Rockin' 50s", tz="Europe/London", url="https://www.rockin50s.uk/schedule.php",
                          streams=["https://eu11.fastcast4u.com:1090/;?type=http&nocache=1778480495"],
                          fetch=lambda u: get(u), parse=parse_rockin50s),
+    "doowop":       dict(name="Doowop Radio", tz="UTC", url="https://tockify.com/doowop/pinboard",
+                         site="https://tockify.com/doowop/pinboard", min_shows=3,
+                         # our Cloudflare Worker relays the station's http stream as https; the plain address is a fallback
+                         streams=["https://rrb-stream.air2810.workers.dev/doowop", "http://66.59.109.208:8000/;stream.mp3?sid=2"],
+                         fetch=doowop_fetch, parse=parse_doowop),
     "wwoz":         dict(browser_fallback=True, name="WWOZ New Orleans", tz="America/Chicago", url="https://www.wwoz.org/schedule",
                          site="https://www.wwoz.org",
                          streams=["https://wwoz-sc.streamguys1.com/wwoz-hi.mp3"],
@@ -600,4 +681,4 @@ def main(only):
 
 
 if __name__ == "__main__":
-    sys.exit(main(set(sys.argv[1:])))
+    sys.exit(main(set(sys.argv[1:]))))
