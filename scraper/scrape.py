@@ -382,10 +382,13 @@ def parse_splinterwood_slots(raw):
             rest = (text[:r.start()] + "\n" + text[r.end():]).splitlines()
             lines = [l.strip(" \t\u00b7|-\u2013\u2014,") for l in rest]
             lines = [l for l in lines if l and l.lower() not in BADGES]
+            # each slot has an avatar circle holding the presenter's initials ("PH", "K"): not part of the name
+            if len(lines) >= 2 and re.fullmatch(r"[A-Z]{1,3}", lines[0]) and len(lines[1]) > 3:
+                lines = lines[1:]
             title = lines[0] if lines else "Show"
             dj = lines[1] if len(lines) > 1 else ""
-            if re.match(r"auto\s*dj", title, re.I) and not dj:
-                dj = "Auto DJ"
+            if re.match(r"auto\s*dj", title, re.I):
+                dj = "Auto DJ"      # the line under it is a description ("Non-stop rock'n'roll, no presenter")
             out.append(show(dow, start, end, title, dj))
     return out
 
