@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-28T11:18:10Z",
+ "generated": "2026-11-28T11:32:42Z",
  "source": "scraper",
  "stations": [
   {
@@ -2152,7 +2152,7 @@
      "dow": 0,
      "start": "00:00",
      "end": "09:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2160,23 +2160,23 @@
      "dow": 0,
      "start": "09:00",
      "end": "11:30",
-     "show": "Sunday Breakfast",
-     "dj": "Stuart Everett",
+     "show": "SE",
+     "dj": "Sunday Breakfast",
      "auto": false
     },
     {
      "dow": 0,
      "start": "11:30",
      "end": "14:00",
-     "show": "Don't Knock The Rock",
-     "dj": "Rockin Eddie",
+     "show": "RE",
+     "dj": "Don't Knock The Rock",
      "auto": false
     },
     {
      "dow": 0,
      "start": "14:00",
      "end": "16:00",
-     "show": "Stompin Steve",
+     "show": "SS",
      "dj": "Stompin Steve",
      "auto": false
     },
@@ -2184,39 +2184,39 @@
      "dow": 0,
      "start": "16:00",
      "end": "18:00",
-     "show": "Can't Do Sixty No More",
-     "dj": "Big Paul",
+     "show": "BP",
+     "dj": "Can't Do Sixty No More",
      "auto": false
     },
     {
      "dow": 0,
      "start": "18:00",
      "end": "20:00",
-     "show": "Sunday Shakedown",
-     "dj": "Pete Rogers",
+     "show": "PR",
+     "dj": "Sunday Shakedown",
      "auto": false
     },
     {
      "dow": 0,
      "start": "20:00",
      "end": "22:00",
-     "show": "Jumpin Around",
-     "dj": "Aaron Killner",
+     "show": "AK",
+     "dj": "Jumpin Around",
      "auto": false
     },
     {
      "dow": 0,
      "start": "22:00",
      "end": "00:00",
-     "show": "Sunday Slowdown",
-     "dj": "KG",
+     "show": "K",
+     "dj": "Sunday Slowdown",
      "auto": false
     },
     {
      "dow": 1,
      "start": "00:00",
      "end": "08:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2224,55 +2224,55 @@
      "dow": 1,
      "start": "08:00",
      "end": "10:00",
-     "show": "Rock N Roll Heaven",
-     "dj": "Leon",
+     "show": "L",
+     "dj": "Rock N Roll Heaven",
      "auto": false
     },
     {
      "dow": 1,
      "start": "10:00",
      "end": "12:00",
-     "show": "Fools Paradise",
-     "dj": "Adrian",
+     "show": "A",
+     "dj": "Fools Paradise",
      "auto": false
     },
     {
      "dow": 1,
      "start": "12:00",
      "end": "14:00",
-     "show": "Midday Mix Up",
-     "dj": "Whiskey Jean",
+     "show": "WJ",
+     "dj": "Midday Mix up",
      "auto": false
     },
     {
      "dow": 1,
      "start": "14:00",
      "end": "16:00",
-     "show": "Mr D",
-     "dj": "Dynamite Dave",
+     "show": "DD",
+     "dj": "Mr D",
      "auto": false
     },
     {
      "dow": 1,
      "start": "16:00",
      "end": "18:00",
-     "show": "Rockin Sessions",
-     "dj": "Little Dave",
+     "show": "LD",
+     "dj": "Rockin Sessions",
      "auto": false
     },
     {
      "dow": 1,
      "start": "18:00",
      "end": "19:00",
-     "show": "Sixty Minute Man",
-     "dj": "Big Paul",
+     "show": "BP",
+     "dj": "Sixty Minute Man",
      "auto": false
     },
     {
      "dow": 1,
      "start": "19:00",
      "end": "20:30",
-     "show": "Jacky Plantaz",
+     "show": "JP",
      "dj": "Jacky Plantaz",
      "auto": false
     },
@@ -2280,15 +2280,15 @@
      "dow": 1,
      "start": "20:30",
      "end": "22:00",
-     "show": "Mr Big Feet",
-     "dj": "Ross",
+     "show": "R",
+     "dj": "Mr Big Feet",
      "auto": false
     },
     {
      "dow": 1,
      "start": "22:00",
      "end": "00:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2296,7 +2296,7 @@
      "dow": 2,
      "start": "00:00",
      "end": "08:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2304,47 +2304,47 @@
      "dow": 2,
      "start": "08:00",
      "end": "10:00",
-     "show": "Finns & Chrome Breakfast Show",
-     "dj": "Wayne Brown",
+     "show": "AB",
+     "dj": "Boppin Bats",
      "auto": false
     },
     {
      "dow": 2,
      "start": "10:00",
      "end": "12:00",
-     "show": "Rockin With Mr Orr",
-     "dj": "Paul Orr",
+     "show": "PO",
+     "dj": "Rockin With Mr Orr",
      "auto": false
     },
     {
      "dow": 2,
      "start": "12:00",
      "end": "14:00",
-     "show": "Rockin PeeWee",
-     "dj": "",
+     "show": "RP",
+     "dj": "Rockin PeeWee",
      "auto": false
     },
     {
      "dow": 2,
      "start": "14:00",
      "end": "16:00",
-     "show": "The Master",
-     "dj": "Barry Bates",
+     "show": "BB",
+     "dj": "The Master",
      "auto": false
     },
     {
      "dow": 2,
      "start": "16:00",
      "end": "18:00",
-     "show": "Big Bald Bopper",
-     "dj": "Dave Hook",
+     "show": "DH",
+     "dj": "Big Bald Bopper",
      "auto": false
     },
     {
      "dow": 2,
      "start": "18:00",
      "end": "20:00",
-     "show": "Noddy",
+     "show": "N",
      "dj": "Noddy",
      "auto": false
     },
@@ -2352,15 +2352,15 @@
      "dow": 2,
      "start": "20:00",
      "end": "22:00",
-     "show": "Rockin Man",
-     "dj": "Paul Squires",
+     "show": "PS",
+     "dj": "Rockin Man",
      "auto": false
     },
     {
      "dow": 2,
      "start": "22:00",
      "end": "00:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2368,7 +2368,7 @@
      "dow": 3,
      "start": "00:00",
      "end": "08:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2376,63 +2376,63 @@
      "dow": 3,
      "start": "08:00",
      "end": "10:00",
-     "show": "The Master",
-     "dj": "Barry Bates",
+     "show": "BB",
+     "dj": "The Master",
      "auto": false
     },
     {
      "dow": 3,
      "start": "10:00",
      "end": "11:00",
-     "show": "21st Century Rock N Roll",
-     "dj": "Whiskey Jean & Matt",
+     "show": "WJ",
+     "dj": "21st Century Rock N Roll",
      "auto": false
     },
     {
      "dow": 3,
      "start": "11:00",
      "end": "13:00",
-     "show": "Screamin Brian",
-     "dj": "Brian",
+     "show": "B",
+     "dj": "Screamin Brian",
      "auto": false
     },
     {
      "dow": 3,
      "start": "13:00",
      "end": "16:00",
-     "show": "Live From Florida",
-     "dj": "Mike Bollea",
+     "show": "MB",
+     "dj": "Live From Florida",
      "auto": false
     },
     {
      "dow": 3,
      "start": "16:00",
      "end": "18:00",
-     "show": "Mr D",
-     "dj": "Dynamite Dave",
+     "show": "DD",
+     "dj": "Mr D",
      "auto": false
     },
     {
      "dow": 3,
      "start": "18:00",
      "end": "20:00",
-     "show": "Don't Knock The Rock",
-     "dj": "Eddie",
+     "show": "E",
+     "dj": "Don't Knock The Rock",
      "auto": false
     },
     {
      "dow": 3,
      "start": "20:00",
      "end": "22:00",
-     "show": "Rockin With Lyndie",
-     "dj": "Lyndie",
+     "show": "L",
+     "dj": "Rockin With Lyndie",
      "auto": false
     },
     {
      "dow": 3,
      "start": "22:00",
      "end": "00:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2440,7 +2440,7 @@
      "dow": 4,
      "start": "00:00",
      "end": "08:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2448,63 +2448,63 @@
      "dow": 4,
      "start": "08:00",
      "end": "10:00",
-     "show": "Finns & Chrome Breakfast Show",
-     "dj": "Wayne Brown",
+     "show": "WB",
+     "dj": "Finns & Chrome Breakfast Show",
      "auto": false
     },
     {
      "dow": 4,
      "start": "10:00",
      "end": "12:00",
-     "show": "Rhythm Revue",
-     "dj": "Neil King",
+     "show": "DN",
+     "dj": "Rhythm Revue",
      "auto": false
     },
     {
      "dow": 4,
      "start": "12:00",
      "end": "14:00",
-     "show": "Jukebox Party",
-     "dj": "Mike Bollea",
+     "show": "MB",
+     "dj": "Jukebox Party",
      "auto": false
     },
     {
      "dow": 4,
      "start": "14:00",
      "end": "16:00",
-     "show": "The Master",
-     "dj": "Barry Bates",
+     "show": "BB",
+     "dj": "The Master",
      "auto": false
     },
     {
      "dow": 4,
      "start": "16:00",
      "end": "18:00",
-     "show": "Blast From The Past",
-     "dj": "Paul Egan",
+     "show": "PE",
+     "dj": "Blast From The Past",
      "auto": false
     },
     {
      "dow": 4,
      "start": "18:00",
      "end": "20:00",
-     "show": "Bill Guntrips Radio Show",
-     "dj": "Bill Guntrip",
+     "show": "BG",
+     "dj": "Bill Guntrip's Radio Show",
      "auto": false
     },
     {
      "dow": 4,
      "start": "20:00",
      "end": "22:00",
-     "show": "DJ Ten-15",
-     "dj": "Garry Leiper",
+     "show": "GL",
+     "dj": "DJ Ten-15",
      "auto": false
     },
     {
      "dow": 4,
      "start": "22:00",
      "end": "00:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2512,7 +2512,7 @@
      "dow": 5,
      "start": "00:00",
      "end": "08:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2520,63 +2520,63 @@
      "dow": 5,
      "start": "08:00",
      "end": "10:00",
-     "show": "Friday Breakfast",
-     "dj": "Mark V",
+     "show": "MV",
+     "dj": "Friday Breakfast",
      "auto": false
     },
     {
      "dow": 5,
      "start": "10:00",
      "end": "12:00",
-     "show": "The Rockin Man",
-     "dj": "Paul",
+     "show": "P",
+     "dj": "The Rockin Man",
      "auto": false
     },
     {
      "dow": 5,
      "start": "12:00",
      "end": "13:00",
-     "show": "Nobsters Beats",
-     "dj": "The Nobster",
+     "show": "TN",
+     "dj": "Nobster's Beats",
      "auto": false
     },
     {
      "dow": 5,
      "start": "13:00",
      "end": "16:00",
-     "show": "Rockin Pee Wee",
-     "dj": "Pee Wee",
+     "show": "PW",
+     "dj": "Rockin Pee Wee",
      "auto": false
     },
     {
      "dow": 5,
      "start": "16:00",
      "end": "18:00",
-     "show": "Big Bald Bopper",
-     "dj": "Dave Hook",
+     "show": "DH",
+     "dj": "Big Bald Bopper",
      "auto": false
     },
     {
      "dow": 5,
      "start": "18:00",
      "end": "21:00",
-     "show": "The Johnny Blue Show",
-     "dj": "JB",
+     "show": "J",
+     "dj": "The Johnny Blue Show",
      "auto": false
     },
     {
      "dow": 5,
      "start": "21:00",
      "end": "22:00",
-     "show": "Rockin Little Tunes",
-     "dj": "LJ",
+     "show": "L",
+     "dj": "Rockin Little Tunes",
      "auto": false
     },
     {
      "dow": 5,
      "start": "22:00",
      "end": "00:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2584,7 +2584,7 @@
      "dow": 6,
      "start": "00:00",
      "end": "08:30",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     },
@@ -2592,47 +2592,47 @@
      "dow": 6,
      "start": "08:30",
      "end": "10:00",
-     "show": "Waking Up The Weekend",
-     "dj": "Pete Harden",
+     "show": "PH",
+     "dj": "Waking Up The Weekend",
      "auto": false
     },
     {
      "dow": 6,
      "start": "10:00",
      "end": "12:00",
-     "show": "Blast From The Past",
-     "dj": "Paul Egan",
+     "show": "PE",
+     "dj": "Blast From The Past",
      "auto": false
     },
     {
      "dow": 6,
      "start": "12:00",
      "end": "14:00",
-     "show": "Lunchtime",
-     "dj": "KG",
+     "show": "K",
+     "dj": "Lunchtime",
      "auto": false
     },
     {
      "dow": 6,
      "start": "14:00",
      "end": "16:00",
-     "show": "Miss Pocket Rocket",
-     "dj": "Laura Jennie",
+     "show": "LJ",
+     "dj": "Miss Pocket Rocket",
      "auto": false
     },
     {
      "dow": 6,
      "start": "16:00",
      "end": "18:00",
-     "show": "Jivin Back To The 50's",
-     "dj": "Mark V",
+     "show": "MV",
+     "dj": "Jivin Back To The 50's",
      "auto": false
     },
     {
      "dow": 6,
      "start": "18:00",
      "end": "21:00",
-     "show": "Rockin Roland",
+     "show": "RR",
      "dj": "Rockin Roland",
      "auto": false
     },
@@ -2640,15 +2640,15 @@
      "dow": 6,
      "start": "21:00",
      "end": "23:00",
-     "show": "Remembering Alan Freed",
-     "dj": "Mike Bollea",
+     "show": "MB",
+     "dj": "Remembering Alan Freed",
      "auto": false
     },
     {
      "dow": 6,
      "start": "23:00",
      "end": "00:00",
-     "show": "Auto DJ",
+     "show": "DJ",
      "dj": "Auto DJ",
      "auto": true
     }

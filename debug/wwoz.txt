@@ -1,6 +1,6 @@
 ERROR: only 0 shows parsed (expected 25+)
 
-HTML length: 180014
+HTML length: 180017
 tables: 1
 contains '/programs/': True
 
@@ -417,3 +417,21 @@ Saturday Nov 28th, 2026
 <div aria-label="..." class="btn-toolbar" role="toolbar">
 <div aria-label="..." class="btn-group" role="group">
 <button class="btn btn-default navbar-btn launch-player listen-now-btn" data-
+
+=== SCRIPT SRC ===
+https://platform-api.sharethis.com/panorama.js
+https://ws.sharethis.com/button/async-buttons.js
+https://www.wwoz.org/sites/default/files/js/js_6UR8aB1w5-y_vdUUdWDWlX2QhWu_qIXlEGEV48YgV-c.js
+https://ws.sharethis.com/button/buttons.js
+https://www.wwoz.org/sites/default/files/js/js_waP91NpgGpectm_6Y2XDEauLJ8WCSCBKmmA87unpp2E.js
+https://www.googletagmanager.com/gtag/js?id=G-76C11D5729
+https://www.wwoz.org/sites/default/files/js/js_daRCj4qfK2oUeM-C28VpepgMOlbiH_9QZdpCLIIbfi0.js
+https://www.wwoz.org/sites/default/files/js/js_NRaFaU4d193TJfTRM_GrUtpVnxQuDLMvjagZ2GOYhi8.js
+//treehouse.wwoz.org/www/delivery/asyncjs.php
+//treehouse.wwoz.org/www/delivery/asyncjs.php
+//treehouse.wwoz.org/www/delivery/asyncjs.php
+//treehouse.wwoz.org/www/delivery/asyncjs.php
+https://www.wwoz.org/sites/default/files/js/js_MRdvkC2u4oGsp5wVxBG1pGV5NrCPW3mssHxIn6G9tGE.js
+
+=== INLINE SCRIPTS mentioning schedule/presenters (0 of 4) ===
+
