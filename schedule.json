@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-28T11:41:58Z",
+ "generated": "2026-11-28T11:48:18Z",
  "source": "scraper",
  "stations": [
   {
@@ -3419,7 +3419,544 @@
    "streams": [
     "https://wwoz-sc.streamguys1.com/wwoz-hi.mp3"
    ],
-   "shows": []
+   "shows": [
+    {
+     "dow": 0,
+     "start": "00:00",
+     "end": "03:00",
+     "show": "Blues in the Night",
+     "dj": "Jamie Dell'Apa",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "03:00",
+     "end": "06:00",
+     "show": "Overnight Music - Sunday",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "06:00",
+     "end": "08:30",
+     "show": "The Sunday Morning Jazz Set",
+     "dj": "Mark Landesman",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "08:30",
+     "end": "10:00",
+     "show": "The Gospel Show",
+     "dj": "Lauren Mastro",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "10:00",
+     "end": "12:00",
+     "show": "Old Time Country and Bluegrass",
+     "dj": "Hazel The Delta Rambler",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "12:00",
+     "end": "14:00",
+     "show": "Cajun and Zydeco",
+     "dj": "Charles Laborde or Jim Hobbs",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "14:00",
+     "end": "16:00",
+     "show": "Homespun Americana",
+     "dj": "Ol Man River",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "16:00",
+     "end": "18:00",
+     "show": "Sitting In",
+     "dj": "Elizabeth Meneray",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "18:00",
+     "end": "20:00",
+     "show": "Hep Cat's Ball",
+     "dj": "the Secretary of Swing",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "20:00",
+     "end": "22:00",
+     "show": "Spirits of Congo Square",
+     "dj": "Baba Geno",
+     "auto": false
+    },
+    {
+     "dow": 0,
+     "start": "22:00",
+     "end": "00:00",
+     "show": "What's New",
+     "dj": "Duane Williams",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "00:00",
+     "end": "03:00",
+     "show": "The Dean's List",
+     "dj": "Dean Ellis",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "03:00",
+     "end": "06:00",
+     "show": "Overnight Music - Monday",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "06:00",
+     "end": "09:00",
+     "show": "The Morning Set",
+     "dj": "Fox Duhon",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "09:00",
+     "end": "11:00",
+     "show": "Traditional Jazz",
+     "dj": "Dan Meyer",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "11:00",
+     "end": "14:00",
+     "show": "New Orleans Music Show",
+     "dj": "Murf Reeves",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "14:00",
+     "end": "16:00",
+     "show": "Blues Eclectic",
+     "dj": "Andrew Grafe",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "16:00",
+     "end": "19:00",
+     "show": "Jazz from Jax Brewery",
+     "dj": "Maryse Dejean",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "19:00",
+     "end": "22:00",
+     "show": "R & B",
+     "dj": "DJ Swamp Boogie",
+     "auto": false
+    },
+    {
+     "dow": 1,
+     "start": "22:00",
+     "end": "00:00",
+     "show": "Kitchen Sink",
+     "dj": "Derrick Freeman",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "00:00",
+     "end": "02:00",
+     "show": "Adjacent",
+     "dj": "Benny Poppins",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "02:00",
+     "end": "06:00",
+     "show": "Overnight Music - Tuesday",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "06:00",
+     "end": "09:00",
+     "show": "The Morning Set",
+     "dj": "Mark LaMaire",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "09:00",
+     "end": "11:00",
+     "show": "Traditional Jazz",
+     "dj": "Leslie Cooper",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "11:00",
+     "end": "14:00",
+     "show": "New Orleans Music Show",
+     "dj": "Cole Williams",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "14:00",
+     "end": "16:00",
+     "show": "Soul Serenade",
+     "dj": "Marc Stone",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "16:00",
+     "end": "19:00",
+     "show": "Jazz from Jax Brewery",
+     "dj": "T.R. Johnson",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "19:00",
+     "end": "22:00",
+     "show": "50s R&B",
+     "dj": "Neil Pellegrin",
+     "auto": false
+    },
+    {
+     "dow": 2,
+     "start": "22:00",
+     "end": "00:00",
+     "show": "The Freaknologist Lunatique Show",
+     "dj": "David Kunian",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "00:00",
+     "end": "03:00",
+     "show": "Over Night Music",
+     "dj": "D Rootzmaster, MID - 3am",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "03:00",
+     "end": "06:00",
+     "show": "Over Night Music",
+     "dj": "D Rootzmaster, 3am - 6am",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "06:00",
+     "end": "09:00",
+     "show": "The Morning Set",
+     "dj": "Breaux Bridges",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "09:00",
+     "end": "11:00",
+     "show": "Traditional Jazz",
+     "dj": "Tom Saunders",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "11:00",
+     "end": "14:00",
+     "show": "New Orleans Music Show",
+     "dj": "Missy Bowen",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "14:00",
+     "end": "16:00",
+     "show": "Sittin' at the Crossroad",
+     "dj": "Big D",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "16:00",
+     "end": "19:00",
+     "show": "Jazz from Jax Brewery",
+     "dj": "Al Colón",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "19:00",
+     "end": "22:00",
+     "show": "R& B Oldies",
+     "dj": "Rare On The Air",
+     "auto": false
+    },
+    {
+     "dow": 3,
+     "start": "22:00",
+     "end": "00:00",
+     "show": "Kitchen Sink",
+     "dj": "A.J. Rodrigue, A.A., and Fox Duhon",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "00:00",
+     "end": "02:00",
+     "show": "Draw Fo",
+     "dj": "Slangston Hughes & Thelonious Kryptonite",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "02:00",
+     "end": "06:00",
+     "show": "Overnight Music - Thursday",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "06:00",
+     "end": "09:00",
+     "show": "The Morning Set",
+     "dj": "Scott Borne",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "09:00",
+     "end": "11:00",
+     "show": "Traditional Jazz",
+     "dj": "Sally Young",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "11:00",
+     "end": "14:00",
+     "show": "New Orleans Music Show",
+     "dj": "Michael Dominici",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "14:00",
+     "end": "16:00",
+     "show": "Blues",
+     "dj": "DJ Giant",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "16:00",
+     "end": "19:00",
+     "show": "Jazz from Jax Brewery",
+     "dj": "Keith Hill",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "19:00",
+     "end": "22:00",
+     "show": "R&B",
+     "dj": "Your Cousin Dimitri",
+     "auto": false
+    },
+    {
+     "dow": 4,
+     "start": "22:00",
+     "end": "00:00",
+     "show": "Kitchen Sink",
+     "dj": "Jennifer Brady",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "00:00",
+     "end": "02:00",
+     "show": "DJ Bus Stop",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "02:00",
+     "end": "06:00",
+     "show": "Overnight Music - Friday",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "06:00",
+     "end": "09:00",
+     "show": "The Morning Set",
+     "dj": "Dave Dauterive",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "09:00",
+     "end": "11:00",
+     "show": "Traditional Jazz",
+     "dj": "the Jazz Police",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "11:00",
+     "end": "14:00",
+     "show": "New Orleans Music Show",
+     "dj": "Black Mold or Bill DeTurk",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "14:00",
+     "end": "16:00",
+     "show": "The Blues Breakdown",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "16:00",
+     "end": "19:00",
+     "show": "Jazz from Jax Brewery",
+     "dj": "Charles Burchell",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "19:00",
+     "end": "22:00",
+     "show": "Music of Mass Distraction",
+     "dj": "Black Mold",
+     "auto": false
+    },
+    {
+     "dow": 5,
+     "start": "22:00",
+     "end": "00:00",
+     "show": "The Rhythm Room",
+     "dj": "Allan \"Alski\" Laskey",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "00:00",
+     "end": "02:00",
+     "show": "Night Train",
+     "dj": "Cool Hand",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "02:00",
+     "end": "06:00",
+     "show": "Overnight Music - Saturday",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "06:00",
+     "end": "08:00",
+     "show": "Music in the Glen",
+     "dj": "",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "08:00",
+     "end": "10:00",
+     "show": "Traditional Jazz",
+     "dj": "Big Pete",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "10:00",
+     "end": "12:00",
+     "show": "New Orleans Music Show",
+     "dj": "DJ Sparky",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "12:00",
+     "end": "14:00",
+     "show": "Tiene Sabor (Latin Show)",
+     "dj": "Yolanda Estrada",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "14:00",
+     "end": "16:00",
+     "show": "Tudo Bem (Brazilian)",
+     "dj": "Dean Ellis",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "16:00",
+     "end": "18:00",
+     "show": "World Journey",
+     "dj": "Logan",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "18:00",
+     "end": "20:00",
+     "show": "Block Party",
+     "dj": "Brice Nice",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "20:00",
+     "end": "22:00",
+     "show": "Soul Power",
+     "dj": "Soul Sister",
+     "auto": false
+    },
+    {
+     "dow": 6,
+     "start": "22:00",
+     "end": "00:00",
+     "show": "Awake and Willing",
+     "dj": "Peggy Lou",
+     "auto": false
+    }
+   ]
   },
   {
    "id": "zombiedog",
