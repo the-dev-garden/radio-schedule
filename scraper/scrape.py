@@ -344,6 +344,10 @@ WWOZ_ENTRY = re.compile(
     r"(\d{1,2}(?::\d{2})?\s*[ap]m)\s*[-\u2013\u2014to]+\s*(\d{1,2}(?::\d{2})?\s*[ap]m)", re.I)
 
 
+WWOZ_DATE = re.compile(r"^(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day,?\s+([A-Za-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s*(\d{4})?\s*$", re.I)
+WWOZ_TIMES = re.compile(r"^(\d{1,2}(?::\d{2})?\s*[ap]m)\s*[-\u2013\u2014]+\s*(\d{1,2}(?::\d{2})?\s*[ap]m)$", re.I)
+
+
 def parse_wwoz(html):
     soup = BeautifulSoup(html, "html.parser")
     for t in soup(["script", "style"]):
@@ -351,19 +355,26 @@ def parse_wwoz(html):
     lines = [l.strip() for l in soup.get_text("\n").splitlines() if l.strip()]
     found, seen = [], set()
     for i, line in enumerate(lines):
-        m = WWOZ_ENTRY.search(line)
-        if not m:
-            continue
-        title = line[:m.start()].strip(" :-\u2013|,")
-        if not title and i > 0:
+        m = WWOZ_ENTRY.search(line)            # layout 1: title, date and times on one line
+        if m:
+            title = line[:m.start()].strip(" :-\u2013|,")
+            if not title and i > 0:
+                title = lines[i - 1]
+            mon, dnum, yr, t1, t2 = m[1], m[2], m[3], m[4], m[5]
+        else:                                    # layout 2 (the live page): title / date / time on separate lines
+            d = WWOZ_DATE.match(line)
+            tm = WWOZ_TIMES.match(lines[i + 1]) if d and i + 1 < len(lines) else None
+            if not (d and tm and i > 0):
+                continue
             title = lines[i - 1]
+            mon, dnum, yr, t1, t2 = d[1], d[2], d[3], tm[1], tm[2]
         if not title:
             continue
         try:
-            month = datetime.datetime.strptime(m[1][:3].title(), "%b").month
-            year = int(m[3]) if m[3] else datetime.date.today().year
-            day = datetime.date(year, month, int(m[2]))
-            start, end = hhmm(m[4]), hhmm(m[5])
+            month = datetime.datetime.strptime(mon[:3].title(), "%b").month
+            year = int(yr) if yr else datetime.date.today().year
+            day = datetime.date(year, month, int(dnum))
+            start, end = hhmm(t1), hhmm(t2)
         except ValueError:
             continue
         key = (day, start, end, title)
@@ -409,7 +420,7 @@ STATIONS = {
     "rockin247":    dict(name="Rockin 247 Radio", tz="UTC", url="https://rockin247radio.com/schedule/",
                          streams=["https://s4.radio.co/s0f3a44a66/listen"],
                          fetch=lambda u: "", parse=parse_rockin247),
-    "splinterwood": dict(browser_fallback=True, name="SplinterWood Radio", tz="Europe/London", url="https://www.splinterwoodradio.uk/presenter-schedule/",
+    "splinterwood": dict(browser_fallback=True, name="SplinterWood Radio", tz="Europe/London", url="https://www.splinterwoodradio.uk/",   # schedule is the #schedule section of the home page
                          site="https://www.splinterwoodradio.uk/index.html",
                          streams=["https://securestreams6.autopo.st:2302/listen.mp3?t=1795719521325"],
                          fetch=lambda u: get(u), parse=parse_splinterwood),
@@ -475,10 +486,9 @@ def main(only):
                 try:
                     raw2 = render(cfg["url"])
                     shows2 = cfg["parse"](raw2)
+                    raw = raw2                      # keep the browser's view for the diagnostic file
                     if len(shows2) > len(shows):
-                        raw, shows, err = raw2, shows2, None
-                    elif not raw:
-                        raw = raw2
+                        shows, err = shows2, None
                 except Exception as e2:
                     err = "%s | browser retry: %r" % (err or "only %d shows parsed" % len(shows), e2)
             if len(shows) < need:
