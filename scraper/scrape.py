@@ -333,6 +333,58 @@ def parse_rockin50s(html):
     return out
 
 
+# ---------------- WWOZ (New Orleans): dated entries "Title ... Saturday Nov 28th, 2026, 6:00 am - 8:00 am" ----------------
+WWOZ_ENTRY = re.compile(
+    r"(?:Mon|Tues|Wednes|Thurs|Fri|Satur|Sun)day,?\s+([A-Za-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s*(\d{4})?,?\s*"
+    r"(\d{1,2}(?::\d{2})?\s*[ap]m)\s*[-\u2013\u2014to]+\s*(\d{1,2}(?::\d{2})?\s*[ap]m)", re.I)
+
+
+def parse_wwoz(html):
+    soup = BeautifulSoup(html, "html.parser")
+    for t in soup(["script", "style"]):
+        t.decompose()
+    lines = [l.strip() for l in soup.get_text("\n").splitlines() if l.strip()]
+    found, seen = [], set()
+    for i, line in enumerate(lines):
+        m = WWOZ_ENTRY.search(line)
+        if not m:
+            continue
+        title = line[:m.start()].strip(" :-\u2013|,")
+        if not title and i > 0:
+            title = lines[i - 1]
+        if not title:
+            continue
+        try:
+            month = datetime.datetime.strptime(m[1][:3].title(), "%b").month
+            year = int(m[3]) if m[3] else datetime.date.today().year
+            day = datetime.date(year, month, int(m[2]))
+            start, end = hhmm(m[4]), hhmm(m[5])
+        except ValueError:
+            continue
+        key = (day, start, end, title)
+        if key not in seen:
+            seen.add(key)
+            found.append(key)
+    if not found:
+        return []
+    first = min(k[0] for k in found)
+    out = []
+    for day, start, end, title in found:
+        if (day - first).days >= 7:      # the page also lists the start of the following week
+            continue
+        dow = (day.weekday() + 1) % 7    # python Mon=0 -> our Sun=0
+        name, _, dj = re.split(r"(\s+with\s+)", title, maxsplit=1, flags=re.I) if re.search(r"\s+with\s+", title, re.I) else (title, "", "")
+        out.append(show(dow, start, end, name, dj))
+    return out
+
+
+def wwoz_fetch(url):
+    html = get(url)
+    if "/programs/" in html:
+        return html
+    return render(url, "a[href*='/programs/']")      # fall back to a real browser if the list is script-built
+
+
 # ---------------- Stations with no machine-readable schedule (e.g. a picture): manual/<id>.json ----------------
 def manual_parser(sid):
     def parse(_unused=None):
@@ -359,6 +411,10 @@ STATIONS = {
     "rockin50s":    dict(name="Rockin' 50s", tz="Europe/London", url="https://www.rockin50s.uk/schedule.php",
                          streams=["https://eu11.fastcast4u.com:1090/;?type=http&nocache=1778480495"],
                          fetch=lambda u: get(u), parse=parse_rockin50s),
+    "wwoz":         dict(name="WWOZ New Orleans", tz="America/Chicago", url="https://www.wwoz.org/schedule",
+                         site="https://www.wwoz.org",
+                         streams=["https://wwoz-sc.streamguys1.com/wwoz-hi.mp3"],
+                         fetch=wwoz_fetch, parse=parse_wwoz),
     "zombiedog":    dict(name="Zombie Dog Radio", tz="Europe/London", url="https://zombiedogradio.com",
                          min_shows=1,       # timetable is a picture; typed into manual/zombiedog.json
                          streams=["https://fast.citrus3.com:8556/stream"],
