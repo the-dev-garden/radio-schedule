@@ -1,29 +1,252 @@
 ERROR: ValueError('SplinterWood: expected 7 days, found 0') | browser retry: ValueError('SplinterWood: expected 7 days, found 0')
 
-HTML length: 519
+HTML length: 62746
 tables: 0
 contains '/programs/': False
 
 === VISIBLE TEXT (first 250 lines) ===
-300 Multiple Choices
-Multiple Choices
-The document name you requested (
-/index.php
-) could not be found on this server.
-However, we found documents with names similar to the one you requested.
-Available documents:
-/index.phpoff
-(common basename)
-/index.html
-(common basename)
+Splinterwood Radio
+Splinterwood
+Radio
+Listen
+Recently played
+Schedule
+Presenters
+Requests
+How to listen
+Shop
+On air 24 hours a day, 7 days a week
+Non-stop
+Rock'n'Roll
+The best of the 1950s and early 1960s, spun back to back.
+Pull up a stool and press play.
+Loading the schedule
+Listen live
+Request a track
+See the schedule
+Splinterwood
+Rock'n'Roll Radio
+Splinter
+wood
+Now playing
+45 RPM
+Splinterwood Radio
+Rock'n'Roll, 24-7
+Volume
+Sleep: off
+Press play to tune in
+Fresh off the turntable
+Recently played
+Checking the live feed
+As an Amazon Associate, Splinterwood Radio earns from qualifying purchases made through the Amazon links.
+On air now
+The station
+24/7
+Non-stop
+1950s
+to early 60s
+Rock'n'roll from its first era, with live presenters through the day and the jukebox keeping the lights on overnight.
+Sponsored
+Hear more rock'n'roll, whenever you like
+Found a record you love on Splinterwood? Stream it on demand with Amazon Music Unlimited.
+Try Amazon Music Unlimited
+Affiliate link. Splinterwood Radio earns from qualifying purchases.
+Who's on when
+Presenter schedule
+Live shows run through most of the day. When no presenter is on air, the Auto DJ keeps the records spinning.
+All times are UK time (GMT or BST).
+Behind the microphones
+Meet the presenters
+Every voice on the schedule, with the shows they host.
+Find a presenter
+No presenter matches that name.
+Request a track
+Got a favourite you want to hear?
+Get in touch with the studio while the presenters are live.
+Text the studio
+07 88 88 999 21
+Standard message rates may apply.
+Send a text
+Copy number
+Email
+studio [at] splinterwoodradio [dot] uk
+Send an email
+Copy address
+Tune in anywhere
+How to listen
+Use the jukebox above, take the station on the road with the app, or paste the stream address into any player.
+On this website
+Press the red button on the jukebox. The player follows you down the page, so you can browse the schedule and keep listening.
+Back to the jukebox
+The Splinterwood app
+Free for phones and tablets. Keeps playing while you use other apps.
+Get it on Google Play
+Download on the App Store
+Any media player
+Open this address in VLC, a smart speaker app or your car's internet radio.
+Copy
+Full listening guide
+Where it all started
+The story of rock'n'roll
+Rock'n'roll grew up in the United States in the late 1940s and early 1950s, born from blues, jump blues, jazz and gospel with a good measure of Western swing and country thrown in. Piano and saxophone led the early records. By the middle of the decade the electric guitar had taken over, with a string bass and a snare hitting the backbeat.
+It was more than a sound. It changed how people dressed, talked and danced, and it put teenagers of every background in front of the same radio. That first wave, from the 1950s into the early 1960s, is the music Splinterwood plays all day and all night.
+1934
+The Boswell Sisters perform "Rock and Roll" in the film Transatlantic Merry-Go-Round.
+1942
+Billboard columnist Maurie Orodenker starts describing upbeat records as rock-and-roll, among them Sister Rosetta Tharpe's "Rock Me".
+1943
+The Rock and Roll Inn is open for business as a music venue in South Merchantville, New Jersey.
+1951
+Cleveland disc jockey Alan Freed plays the music on air and spreads the phrase.
+Fan mail
+What our listeners say
+Thank you so much. Splinterwood radio has kept me going through these lockdowns!
+Kim Haston, via email
+Bringing us music that has helped keep Helen and I Rockin while we worked all day every day!!
+Colin Larke, via Facebook
+Keep the music going
+More from Splinterwood
+Shop
+Station merchandise and gifts.
+Amazon recommended
+Records and gear picked by the team.
+Advertise with us
+Reach listeners who love the golden age of rock'n'roll.
+Social stream
+Follow the station across social media.
+Splinterwood
+Radio
+Rock'n'roll music, 24-7. Splinterwood Radio Ltd is a company registered in England and Wales with company number 13117291.
+Listen
+Schedule
+Requests
+Advertising
+Back to top
+Splinterwood Radio
+Rock'n'Roll, 24-7
 
 === BODY MARKUP (first 5000 chars) ===
-<body>
-<h1>Multiple Choices</h1>
-The document name you requested (<code>/index.php</code>) could not be found on this server.
-However, we found documents with names similar to the one you requested.<p>Available documents:
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>Splinterwood Radio</title>
+<meta content="cover" name="claude:viewport-fit-sides"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&amp;family=Barlow:wght@400;500;600&amp;family=Barlow+Condensed:wght@500;600;700&amp;family=Special+Elite&amp;display=swap" rel="stylesheet"/>
+
+<header class="site-head" id="top">
+<div class="wrap head-in">
+<a aria-label="Splinterwood Radio, back to top" class="brand" href="#top"><b>Splinterwood</b><span>Radio</span></a>
+<nav aria-label="Main" class="nav">
 <ul>
-<li><a href="/index.phpoff">/index.phpoff</a> (common basename)
-<li><a href="/index.html">/index.html</a> (common basename)
-</li></li></ul>
-</p></body>
+<li><a href="#player">Listen</a></li>
+<li><a href="#recent">Recently played</a></li>
+<li><a href="#schedule">Schedule</a></li>
+<li><a href="#team">Presenters</a></li>
+<li><a href="#request">Requests</a></li>
+<li><a href="#how">How to listen</a></li>
+<li><a class="ext" href="https://www.splinterwoodradio.uk/shopfront/" rel="noopener" target="_blank">Shop</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main>
+<section aria-labelledby="h1" class="hero" id="player">
+<div class="wrap hero-grid">
+<div>
+<p class="eyebrow">On air 24 hours a day, 7 days a week</p>
+<h1 id="h1">Non-stop <em>Rock'n'Roll</em></h1>
+<p class="sub">The best of the 1950s and early 1960s, spun back to back. <span>Pull up a stool and press play.</span></p>
+<p class="air-chip"><span aria-hidden="true" class="dot"></span><span id="heroAir">Loading the schedule</span></p>
+<div class="btn-row">
+<button class="btn btn-primary" id="heroPlay" type="button">Listen live</button>
+<a class="btn btn-ghost" href="#request">Request a track</a>
+<a class="btn btn-ghost" href="#schedule">See the schedule</a>
+</div>
+</div>
+<div>
+<div aria-label="Splinterwood jukebox radio player" class="jb">
+<div class="jb-chrome">
+<div class="jb-body">
+<div class="jb-sign">
+<h2>Splinterwood</h2>
+<p>Rock'n'Roll Radio</p>
+<div aria-hidden="true" class="bulbs"></div>
+</div>
+<div class="jb-mid">
+<div aria-hidden="true" class="tube"></div>
+<div aria-hidden="true" class="jb-window">
+<div class="vinyl"><div class="lab"><span>Splinter<br/>wood</span></div></div>
+<div class="arm"></div>
+</div>
+<div aria-hidden="true" class="tube r"></div>
+</div>
+<div aria-live="polite" class="slip">
+<div class="slip-top"><span class="lamp">Now playing</span><span>45 RPM</span></div>
+<p class="slip-artist" id="nowArtist">Splinterwood Radio</p>
+<p class="slip-title" id="nowTitle">Rock'n'Roll, 24-7</p>
+</div>
+<div aria-hidden="true" class="eq" id="eq"></div>
+<div class="ctrl">
+<button aria-label="Play live radio" aria-pressed="false" class="play" id="playBtn" type="button">
+<span class="play-face">
+<svg aria-hidden="true" class="i-play" viewbox="0 0 24 24"><path d="M8 5.2v13.6a1 1 0 0 0 1.5.86l11-6.8a1 1 0 0 0 0-1.72l-11-6.8A1 1 0 0 0 8 5.2z"></path></svg>
+<svg aria-hidden="true" class="i-pause" viewbox="0 0 24 24"><rect height="14" rx="1" width="4.5" x="6" y="5"></rect><rect height="14" rx="1" width="4.5" x="13.5" y="5"></rect></svg>
+</span>
+</button>
+<div class="knob-box">
+<div aria-label="Volume" aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" class="knob" id="knob" role="slider" tabindex="0"><div class="knob-cap"></div></div>
+<span class="mini-lab">Volume</span>
+</div>
+<div class="side-ctrls">
+<button aria-label="Sleep timer" class="pill" id="sleepBtn" type="button">Sleep: off</button>
+</div>
+</div>
+<div aria-hidden="true" class="grille"></div>
+</div>
+</div>
+</div>
+<p class="status" id="status" role="status">Press play to tune in</p>
+</div>
+</div>
+</section>
+<div aria-hidden="true" class="checker"></div>
+<section aria-labelledby="recent-h" class="sec band" id="recent">
+<div class="wrap two">
+<div>
+<div class="sec-head">
+<p class="eyebrow">Fresh off the turntable</p>
+<h2 class="h2" id="recent-h">Recently played</h2>
+<p class="feed-tag" id="feedTag">Checking the live feed</p>
+</div>
+<ol aria-label="Last tracks played" class="played" id="played"></ol>
+<p class="tz">As an Amazon Associate, Splinterwood Radio earns from qualifying purchases made through the Amazon links.</p>
+</div>
+<aside>
+<div aria-live="polite" class="panel">
+<h3>On air now</h3>
+<div class="who-row" id="onairNow"></div>
+<p class="next" id="onairNext"></p>
+</div>
+<div class="panel">
+<h3>The station</h3>
+<div class="stat-row">
+<div><b>24/7</b><span>Non-stop</span></div>
+<div><b>1950s</b><span>to early 60s</span></div>
+</div>
+<p class="next">Rock'n'roll from its first era, with live presenters through the day and the jukebox keeping the lights on overnight.</p>
+</div>
+</aside>
+</div>
+</section>
+<div aria-hidden="true" class="checker"></div>
+<section aria-label="Sponsored: Amazon Music Unlimited" class="promo-sec">
+<div class="wrap">
+<div class="promo">
+<span aria-hidden="true" class="disc big"></span>
+<div class="promo-t">
+<p class="eyebrow">Sponsor

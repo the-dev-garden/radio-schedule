@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-28T11:10:06Z",
+ "generated": "2026-11-28T11:18:10Z",
  "source": "scraper",
  "stations": [
   {
@@ -2142,7 +2142,7 @@
    "id": "splinterwood",
    "name": "SplinterWood Radio",
    "tz": "Europe/London",
-   "url": "https://www.splinterwoodradio.uk/presenter-schedule/",
+   "url": "https://www.splinterwoodradio.uk/",
    "site": "https://www.splinterwoodradio.uk/index.html",
    "streams": [
     "https://securestreams6.autopo.st:2302/listen.mp3?t=1795719521325"
