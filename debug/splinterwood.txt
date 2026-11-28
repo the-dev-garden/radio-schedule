@@ -1,0 +1,29 @@
+ERROR: ValueError('SplinterWood: expected 7 days, found 0') | browser retry: ValueError('SplinterWood: expected 7 days, found 0')
+
+HTML length: 519
+tables: 0
+contains '/programs/': False
+
+=== VISIBLE TEXT (first 250 lines) ===
+300 Multiple Choices
+Multiple Choices
+The document name you requested (
+/index.php
+) could not be found on this server.
+However, we found documents with names similar to the one you requested.
+Available documents:
+/index.phpoff
+(common basename)
+/index.html
+(common basename)
+
+=== BODY MARKUP (first 5000 chars) ===
+<body>
+<h1>Multiple Choices</h1>
+The document name you requested (<code>/index.php</code>) could not be found on this server.
+However, we found documents with names similar to the one you requested.<p>Available documents:
+<ul>
+<li><a href="/index.phpoff">/index.phpoff</a> (common basename)
+<li><a href="/index.html">/index.html</a> (common basename)
+</li></li></ul>
+</p></body>
