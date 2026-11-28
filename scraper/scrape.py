@@ -17,7 +17,11 @@ import requests
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parent.parent
-UA = {"User-Agent": "Mozilla/5.0 (personal radio schedule viewer)"}
+UA = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-GB,en;q=0.9",
+}
 DAYS = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 D3 = {d[:3]: i for i, d in enumerate(DAYS)}
 MIN_SHOWS = 25  # fewer than this = something is wrong with the parse
@@ -97,13 +101,14 @@ def parse_splinterwood(html):
 
 
 # ---------------- Rockin' Rhythm & Blues: JS-built weekly grid, US Eastern ----------------
-def render(url, wait_selector):
+def render(url, wait_selector="body"):
     from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
         b = p.chromium.launch()
-        pg = b.new_page()
-        pg.goto(url, wait_until="networkidle", timeout=60000)
+        pg = b.new_page(user_agent=UA["User-Agent"], locale="en-GB")
+        pg.goto(url, wait_until="domcontentloaded", timeout=60000)
         pg.wait_for_selector(wait_selector, timeout=30000)
+        pg.wait_for_timeout(4000)          # let script-built content appear
         html = pg.content()
         b.close()
     return html
@@ -404,14 +409,14 @@ STATIONS = {
     "rockin247":    dict(name="Rockin 247 Radio", tz="UTC", url="https://rockin247radio.com/schedule/",
                          streams=["https://s4.radio.co/s0f3a44a66/listen"],
                          fetch=lambda u: "", parse=parse_rockin247),
-    "splinterwood": dict(name="SplinterWood Radio", tz="Europe/London", url="https://www.splinterwoodradio.uk/presenter-schedule/",
+    "splinterwood": dict(browser_fallback=True, name="SplinterWood Radio", tz="Europe/London", url="https://www.splinterwoodradio.uk/presenter-schedule/",
                          site="https://www.splinterwoodradio.uk/index.html",
                          streams=["https://securestreams6.autopo.st:2302/listen.mp3?t=1795719521325"],
                          fetch=lambda u: get(u), parse=parse_splinterwood),
-    "rockin50s":    dict(name="Rockin' 50s", tz="Europe/London", url="https://www.rockin50s.uk/schedule.php",
+    "rockin50s":    dict(browser_fallback=True, name="Rockin' 50s", tz="Europe/London", url="https://www.rockin50s.uk/schedule.php",
                          streams=["https://eu11.fastcast4u.com:1090/;?type=http&nocache=1778480495"],
                          fetch=lambda u: get(u), parse=parse_rockin50s),
-    "wwoz":         dict(name="WWOZ New Orleans", tz="America/Chicago", url="https://www.wwoz.org/schedule",
+    "wwoz":         dict(browser_fallback=True, name="WWOZ New Orleans", tz="America/Chicago", url="https://www.wwoz.org/schedule",
                          site="https://www.wwoz.org",
                          streams=["https://wwoz-sc.streamguys1.com/wwoz-hi.mp3"],
                          fetch=wwoz_fetch, parse=parse_wwoz),
@@ -425,6 +430,24 @@ STATIONS = {
                          streams=["https://rrb-stream.air2810.workers.dev", "http://s6.voscast.com:11632/live"],
                          fetch=lambda u: render(u, "a[href*='/show/']"), parse=parse_rrb),
 }
+
+
+def dump_debug(sid, raw, err):
+    """When a station fails, save what we received so the cause can be diagnosed."""
+    d = ROOT / "debug"
+    d.mkdir(exist_ok=True)
+    body = ""
+    if isinstance(raw, str) and raw:
+        try:
+            soup = BeautifulSoup(raw, "html.parser")
+            for t in soup(["script", "style"]):
+                t.decompose()
+            lines = [l.strip() for l in soup.get_text("\n").splitlines() if l.strip()]
+            body = "HTML length: %d\ntables: %d\ncontains '/programs/': %s\n\n=== VISIBLE TEXT (first 250 lines) ===\n%s\n\n=== BODY MARKUP (first 5000 chars) ===\n%s" % (
+                len(raw), len(soup.find_all("table")), "/programs/" in raw, "\n".join(lines[:250]), str(soup.body or soup)[:5000])
+        except Exception as e:
+            body = "could not summarise: %s" % e
+    (d / (sid + ".txt")).write_text("ERROR: %s\n\n%s\n" % (err, body))
 
 
 def main(only):
@@ -441,13 +464,30 @@ def main(only):
         if only and sid not in only:
             result.append(entry); continue
         try:
-            shows = cfg["parse"](cfg["fetch"](cfg["url"]))
+            raw, shows, err = "", [], None
+            need = cfg.get("min_shows", MIN_SHOWS)
+            try:
+                raw = cfg["fetch"](cfg["url"])
+                shows = cfg["parse"](raw)
+            except Exception as e:
+                err = repr(e)
+            if len(shows) < need and cfg.get("browser_fallback"):
+                try:
+                    raw2 = render(cfg["url"])
+                    shows2 = cfg["parse"](raw2)
+                    if len(shows2) > len(shows):
+                        raw, shows, err = raw2, shows2, None
+                    elif not raw:
+                        raw = raw2
+                except Exception as e2:
+                    err = "%s | browser retry: %r" % (err or "only %d shows parsed" % len(shows), e2)
+            if len(shows) < need:
+                msg = err or "only %d shows parsed (expected %d+)" % (len(shows), need)
+                dump_debug(sid, raw, msg)
+                raise ValueError(msg)
             for s in shows:
                 s["auto"] = bool(re.match(r"auto\s*dj", s["dj"], re.I))
             shows.sort(key=lambda s: (s["dow"], s["start"], s["end"]))
-            need = cfg.get("min_shows", MIN_SHOWS)
-            if len(shows) < need:
-                raise ValueError("only %d shows parsed (expected %d+)" % (len(shows), need))
             entry["shows"] = shows
             entry.pop("note", None)
             print("ok   %-13s %d shows" % (sid, len(shows)))
