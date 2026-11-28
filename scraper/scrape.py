@@ -440,7 +440,11 @@ def parse_wwoz(html):
             mon, dnum, yr, t1, t2 = m[1], m[2], m[3], m[4], m[5]
         else:                                    # layout 2 (the live page): title / date / time on separate lines
             d = WWOZ_DATE.match(line)
-            tm = WWOZ_TIMES.match(lines[i + 1]) if d and i + 1 < len(lines) else None
+            tm = None
+            if d and i + 1 < len(lines):
+                tm = WWOZ_TIMES.match(lines[i + 1])                              # "6:00 am - 8:00 am" on one line
+                if not tm:                                                       # live page: "6:00 am", "-", "8:00 am" on three lines
+                    tm = WWOZ_TIMES.match(" ".join(lines[i + 1:i + 4]))
             if not (d and tm and i > 0):
                 continue
             title = lines[i - 1]
